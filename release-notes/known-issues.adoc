@@ -1,0 +1,96 @@
+---
+sidebar: sidebar 
+permalink: release-notes/known-issues.html 
+keywords: astra, control center, bugs, known issues, problems 
+summary: 既知の問題は、このリリースの製品を正常に使用できない可能性のある問題を特定します。 
+---
+= 既知の問題
+:hardbreaks:
+:allow-uri-read: 
+:source-highlighter: highlight.js
+:icons: font
+:imagesdir: ../media/release-notes/
+
+
+既知の問題は、このリリースの製品を正常に使用できない可能性のある問題を特定します。
+
+現在のリリースに影響する既知の問題は次のとおりです。
+
+.アプリケーション
+*  of an app results in PV size larger than original PV
+*  clones fail using a specific version of PostgreSQL
+*  clones fail when using Service Account level OCP Security Context Constraints (SCC)
+*  clones fail after an application is deployed with a set storage class
+*  backups and snapshots fail if the volumesnapshotclass is added after a cluster is managed
+
+
+.クラスタ
+*  a cluster with Astra Control Center fails when default kubeconfig file contains more than one context
+
+
+.その他の問題
+*  data management operations fail with Internal Service Error (500) when Astra Trident is offline
+*  might fail with snapshot controller version 4.2.0
+
+
+
+
+== アプリケーションをリストアすると、 PV のサイズが元の PV よりも大きくなります
+
+バックアップの作成後に永続ボリュームのサイズを変更し、そのバックアップからリストアすると、永続ボリュームのサイズはバックアップのサイズではなく PV の新しいサイズと一致します。
+
+
+
+== 特定のバージョンの PostgreSQL を使用すると、アプリケーションクローンが失敗します
+
+Bitnami PostgreSQL 11.5.0 チャートを使用すると、同じクラスタ内のアプリケーションクローンは一貫して失敗します。正常にクローニングするには、以前のバージョンのグラフを使用してください。
+
+
+
+== サービスアカウントレベルの OCP セキュリティコンテキスト制約（ SCC ）を使用すると、アプリケーションのクローンが失敗する
+
+OpenShift Container Platform クラスタのネームスペース内のサービスアカウントレベルで元のセキュリティコンテキストの制約が設定されていると、アプリケーションクローンが失敗する場合があります。アプリケーションクローンが失敗すると、Astra Control Centerの管理対象アプリケーション領域にステータスとともに表示されます `Removed`。を参照してください https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra/Application_clone_is_failing_for_an_application_in_Astra_Control_Center["技術情報アーティクル"^] を参照してください。
+
+
+
+== クラスタの管理後にボリュームnapshotclassを追加すると、アプリケーションのバックアップとSnapshotが失敗します
+
+でバックアップとSnapshotの作成が失敗する `UI 500 error` このシナリオでは、回避策 として、アプリリストを更新します。
+
+
+
+== ストレージクラスを設定してアプリケーションを導入すると、アプリケーションのクローンが失敗する
+
+ストレージクラスを明示的に設定してアプリケーションを導入したあと（例： `helm install ...-set global.storageClass=netapp-cvs-perf-extreme`その後、アプリケーションのクローニングを実行するには、ターゲットクラスタに元のストレージクラスが指定されている必要があります。ストレージクラスを明示的に設定したアプリケーションを、同じストレージクラスを含まないクラスタにクローニングすると、失敗します。このシナリオではリカバリ手順はありません。
+
+
+
+== デフォルトの kubeconfig ファイルに複数のコンテキストが含まれている場合、 Astra Control Center を使用したクラスタの管理が失敗します
+
+複数のクラスタおよびコンテキストで kubeconfig を使用することはできません。を参照してください link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra/Managing_cluster_with_Astra_Control_Center_may_fail_when_using_default_kubeconfig_file_contains_more_than_one_context["技術情報アーティクル"^] を参照してください。
+
+
+
+== Astra Trident がオフラインの場合、 Internal Service Error （ 500 ）によりアプリケーションデータ管理処理が失敗する
+
+アプリケーションクラスタの Astra Trident がオフラインになり（オンラインに戻った）、 500 件の内部サービスエラーが発生した場合に、アプリケーションデータ管理を試みると、アプリケーションクラスタ内のすべての Kubernetes ノードを再起動して機能を復旧します。
+
+
+
+== Snapshot コントローラバージョン 4.2.0 では、 Snapshot が失敗することがあります
+
+Kubernetes 1.20 または 1.21 で Kubernetes snapshot-controller （別名 external-snapshotter ）バージョン 4.2.0 を使用すると、 Snapshot が失敗することがあります。これを防ぐには、別のを使用してください https://kubernetes-csi.github.io/docs/snapshot-controller.html["サポートされているバージョン"^] バージョン 4.2.1 などの外部 Snapshot データ。 Kubernetes バージョン 1.20 または 1.21 で使用。
+
+. POST呼び出しを実行して、更新されたkubeconfigファイルをに追加します `/credentials` エンドポイントを選択し、割り当てられているを取得し `id` 応答の本文から：
+. からPUT呼び出しを実行します `/clusters` 適切なクラスタIDを使用してエンドポイントを設定します `credentialID` に移動します `id` 前の手順で確認した値。
+
+
+これらの手順が完了すると、クラスタに関連付けられているクレデンシャルが更新され、クラスタを再接続して状態をに更新できるようになります `available`。
+
+
+
+== 詳細については、こちらをご覧ください
+
+* link:../release-notes/known-issues-ads.html["Astra データストアのプレビューおよびこの Astra Control Center リリースでの既知の問題"]
+* link:../release-notes/known-limitations.html["既知の制限"]
+

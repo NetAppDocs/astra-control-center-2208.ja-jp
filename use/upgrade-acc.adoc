@@ -1,0 +1,516 @@
+---
+sidebar: sidebar 
+permalink: use/upgrade-acc.html 
+keywords: astra upgrade, upgrade astra control center, how to upgrade astra control, update 
+summary: Astra Control Center をアップグレードするには、バンドルをダウンロードし、説明されている手順に従ってアップグレードします。 
+---
+= Astra Control Center をアップグレードします
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+Astra Control Center をアップグレードするには、NetApp Support Siteからインストールバンドルをダウンロードし、以下の手順を実行して、環境内の Astra Control Center コンポーネントをアップグレードします。この手順を使用して、インターネット接続環境またはエアギャップ環境の Astra コントロールセンターをアップグレードできます。
+
+.必要なもの
+* link:../get-started/requirements.html["アップグレードを開始する前に、環境が Astra Control Center 導入の最小要件を満たしていることを確認します"]。
+* すべてのクラスタオペレータが正常な状態であり、使用可能であることを確認します。
++
+[listing]
+----
+kubectl get clusteroperators
+----
+* すべての API サービスが正常な状態であり、使用可能であることを確認します。
++
+[listing]
+----
+kubectl get apiservices
+----
+* Astra Control Center からログアウトします。
+
+
+Astra Control Center のアップグレードプロセスでは、次の手順を実行できます。
+
+*  the Astra Control Center bundle
+*  the bundle and change directory
+*  the images to your local registry
+*  the updated Astra Control Center operator
+*  Astra Control Center
+*  third-party services (Optional)
+*  system status
+*  up ingress for load balancing
+
+
+
+IMPORTANT: すべてのAstra Control Centerポッドが削除されないように、アップグレードプロセス全体で次のコマンドを実行しないでください。 `kubectl delete -f astra_control_center_operator_deploy.yaml`
+
+
+TIP: スケジュール、バックアップ、 Snapshot が実行されていないときは、メンテナンス時間内にアップグレードを実行します。
+
+
+NOTE: Docker Engine の代わりに Red Hat の Podman を使用している場合は、 Docker コマンドの代わりに Podman コマンドを使用できます。
+
+
+
+== Astra Control Center バンドルをダウンロードします
+
+. Astra Control Centerアップグレードバンドルをダウンロードします (`astra-control-center-[version].tar.gz`）をダウンロードします。https：mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab[NetApp Support Site^]
+. （任意）次のコマンドを使用して、バンドルのシグニチャを確認します。
++
+[listing]
+----
+openssl dgst -sha256 -verify AstraControlCenter-public.pub -signature astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz
+----
+
+
+
+
+== バンドルを開梱し、ディレクトリを変更します
+
+. 画像を抽出します。
++
+[listing]
+----
+tar -vxzf astra-control-center-[version].tar.gz
+----
+
+
+
+
+== イメージをローカルレジストリに追加します
+
+. コンテナエンジンに応じた手順を実行します。
+
+
+[role="tabbed-block"]
+====
+.Docker です
+--
+. Astraディレクトリに移動します。
++
+[source, sh]
+----
+cd acc
+----
+. [[[[</Z1>[</Z1>[</Z1>[</Z1>[</Z1>[</Z1>[</Z1>[</Z1></Z1>_image_local_registry_push]]]]]]]]]]</Z2>アストラControl Centerイメージディレクトリ内のパッケージイメージをローカルレジストリにプッシュします。</Z3>コマンドを実行する前に、次の置き換えを行ってください。
++
+** bundle_fileをAstra Controlバンドルファイルの名前に置き換えます（例： `acc.manifest.yaml`）。
+** my_registryをDockerリポジトリのURLに置き換えます。
+** my_registry_userをユーザー名に置き換えます。
+** my_registry_tokenをレジストリの認証済みトークンに置き換えます。
++
+[source, sh]
+----
+kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_USER -p MY_REGISTRY_TOKEN
+----
+
+
+
+
+--
+.ポドマン
+--
+. レジストリにログインします。
++
+[source, sh]
+----
+podman login [your_registry_path]
+----
+. 次のスクリプトを実行して、コメントに記載されているように<your _registry>を置き換えます。
++
+[source, sh]
+----
+# You need to be at the root of the tarball.
+# You should see these files to confirm correct location:
+#   acc.manifest.yaml
+#   acc/
+
+# Replace <YOUR_REGISTRY> with your own registry (e.g registry.customer.com or registry.customer.com/testing, etc..)
+export REGISTRY=<YOUR_REGISTRY>
+export PACKAGENAME=acc
+export PACKAGEVERSION=22.08.1-26
+export DIRECTORYNAME=acc
+for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
+  # Load to local cache
+  astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image(s): //')
+
+  # Remove path and keep imageName.
+  astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
+
+  # Tag with local image repo.
+  podman tag ${astraImage} ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+
+  # Push to the local repo.
+  podman push ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+done
+----
+
+
+--
+====
+
+
+== 更新された Astra Control Center オペレータをインストールします
+
+. ディレクトリを変更します。
++
+[listing]
+----
+cd manifests
+----
+. Astra Control Centerオペレータ配置YAMLを編集します (`astra_control_center_operator_deploy.yaml`)を参照して、ローカルレジストリとシークレットを参照してください。
++
+[listing]
+----
+vim astra_control_center_operator_deploy.yaml
+----
++
+.. 認証が必要なレジストリを使用する場合は、のデフォルト行を置き換えます `imagePullSecrets: []` 次の条件を満たす場合：
++
+[listing]
+----
+imagePullSecrets:
+- name: <name_of_secret_with_creds_to_local_registry>
+----
+.. 変更 `[your_registry_path]` をクリックします `kube-rbac-proxy` でイメージをプッシュしたレジストリパスへのイメージ ,前の手順。
+.. 変更 `[your_registry_path]` をクリックします `acc-operator-controller-manager` でイメージをプッシュしたレジストリパスへのイメージ ,前の手順。
+.. に次の値を追加します `env` セクション。
++
+[listing]
+----
+- name: ACCOP_HELM_UPGRADETIMEOUT
+  value: 300m
+----
++
+[listing, subs="+quotes"]
+----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    control-plane: controller-manager
+  name: acc-operator-controller-manager
+  namespace: netapp-acc-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  template:
+    metadata:
+      labels:
+        control-plane: controller-manager
+    spec:
+      containers:
+      - args:
+        - --secure-listen-address=0.0.0.0:8443
+        - --upstream=http://127.0.0.1:8080/
+        - --logtostderr=true
+        - --v=10
+        *image: [your_registry_path]/kube-rbac-proxy:v4.8.0*
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 8443
+          name: https
+      - args:
+        - --health-probe-bind-address=:8081
+        - --metrics-bind-address=127.0.0.1:8080
+        - --leader-elect
+        command:
+        - /manager
+        env:
+        - name: ACCOP_LOG_LEVEL
+          value: "2"
+        *- name: ACCOP_HELM_UPGRADETIMEOUT*
+          *value: 300m*
+        *image: [your_registry_path]/acc-operator:[version x.y.z]*
+        imagePullPolicy: IfNotPresent
+      *imagePullSecrets: []*
+----
+
+
+. 更新された Astra Control Center オペレータをインストールします。
++
+[listing]
+----
+kubectl apply -f astra_control_center_operator_deploy.yaml
+----
++
+回答例：
+
++
+[listing]
+----
+namespace/netapp-acc-operator unchanged
+customresourcedefinition.apiextensions.k8s.io/astracontrolcenters.astra.netapp.io configured
+role.rbac.authorization.k8s.io/acc-operator-leader-election-role unchanged
+clusterrole.rbac.authorization.k8s.io/acc-operator-manager-role configured
+clusterrole.rbac.authorization.k8s.io/acc-operator-metrics-reader unchanged
+clusterrole.rbac.authorization.k8s.io/acc-operator-proxy-role unchanged
+rolebinding.rbac.authorization.k8s.io/acc-operator-leader-election-rolebinding unchanged
+clusterrolebinding.rbac.authorization.k8s.io/acc-operator-manager-rolebinding configured
+clusterrolebinding.rbac.authorization.k8s.io/acc-operator-proxy-rolebinding unchanged
+configmap/acc-operator-manager-config unchanged
+service/acc-operator-controller-manager-metrics-service unchanged
+deployment.apps/acc-operator-controller-manager configured
+----
+. ポッドが実行中であることを確認します
++
+[listing]
+----
+kubectl get pods -n netapp-acc-operator
+----
+
+
+
+
+== Astra Control Center をアップグレードします
+
+. Astra Control Centerカスタムリソース（CR）の編集 (`astra_control_center_min.yaml`）をクリックし、Astraバージョンを変更します (`astraVersion` の内部 `Spec`）最新の番号：
++
+[listing]
+----
+kubectl edit acc -n [netapp-acc or custom namespace]
+----
++
+
+NOTE: レジストリパスは、のイメージをプッシュしたレジストリパスと一致する必要があります ,前の手順。
+
+. 内に次の行を追加します `additionalValues` の内部 `Spec` Astra Control Center CRで、次の手順を実行します。
++
+[listing]
+----
+additionalValues:
+    nautilus:
+      startupProbe:
+        periodSeconds: 30
+        failureThreshold: 600
+----
+. 次のいずれかを実行します。
++
+.. 独自のIngressControllerまたは入力がなく、トラフィックゲートウェイをロードバランサタイプサービスとして使用していて、そのセットアップを続行する場合は、別のフィールドを指定します `ingressType` （まだ存在しない場合）を選択し、に設定します `AccTraefik`。
++
+[listing]
+----
+ingressType: AccTraefik
+----
+.. デフォルトのAstra Control Centerの一般的な入力配置に切り替える場合は、独自のIngressController/Ingressセットアップ（TLS終端など）を指定し、Astra Control Centerへのルートを開き、を設定します `ingressType` 終了： `Generic`。
++
+[listing]
+----
+ingressType: Generic
+----
++
+
+TIP: フィールドを省略すると、プロセスは汎用的な配置になります。汎用的な導入が不要な場合は、必ずフィールドを追加してください。
+
+
+
+. （オプション）ポッドが終了し、再び使用可能になったことを確認します。
++
+[listing]
+----
+watch kubectl get po -n [netapp-acc or custom namespace]
+----
+. Astra のステータス状態がアップグレードが完了し、準備ができたことを示すまで待ちます。
++
+[listing]
+----
+kubectl get -o yaml -n [netapp-acc or custom namespace] astracontrolcenters.astra.netapp.io astra
+----
++
+対応：
+
++
+[listing]
+----
+conditions:
+  - lastTransitionTime: "2021-10-25T18:49:26Z"
+    message: Astra is deployed
+    reason: Complete
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2021-10-25T18:49:26Z"
+    message: Upgrading succeeded.
+    reason: Complete
+    status: "False"
+    type: Upgrading
+----
+. ログインし直して、すべての管理対象クラスタとアプリケーションが引き続き存在し、保護されていることを確認します。
+. オペレータが Cert-manager を更新しなかった場合は、次の手順でサードパーティのサービスをアップグレードします。
+
+
+
+
+== サードパーティサービスのアップグレード（オプション）
+
+以前のアップグレード手順では、サードパーティサービス Traefik および Cert-manager はアップグレードされません。オプションで、ここで説明する手順を使用してアップグレードしたり、システムに必要な既存のサービスバージョンを保持したりできます。
+
+* * Traefik* ：デフォルトでは、 Astra Control Center が Traefik 導入のライフサイクルを管理します。設定 `externalTraefik` 終了： `false` （デフォルト）システムに外部Traefikが存在せず、Astra Control CenterによってTraefikがインストールおよび管理されていることを示します。この場合、  `externalTraefik` がに設定されます `false`。
++
+一方、独自のTraefik展開をお持ちの場合は、を設定します `externalTraefik` 終了： `true`。この場合、導入を維持していると、Astra Control CenterはCRDをアップグレードしません。ただし `shouldUpgrade` がに設定されます `true`。
+
+* * Cert-manager]：デフォルトでは、Astra Control Centerは、を設定しない限り、証明書マネージャ(およびCRD)をインストールします `externalCertManager` 終了： `true`。設定 `shouldUpgrade` 終了： `true` Astra Control Centerを使用するには、CRDをアップグレードします。
+
+
+次のいずれかの条件に該当する場合は、 Traefik がアップグレードされます。
+
+* externalTraefik: false
+* externalTraefik: true と shouldUpgrade: true 。
+
+
+.手順
+. を編集します `acc` CR：
++
+[listing]
+----
+kubectl edit acc -n [netapp-acc or custom namespace]
+----
+. を変更します `externalTraefik` フィールドと `shouldUpgrade` いずれかの値を入力します `true` または `false` 必要に応じて。
++
+[listing]
+----
+crds:
+    externalTraefik: false
+    externalCertManager: false
+    shouldUpgrade: false
+----
+
+
+
+
+== システムステータスを確認します
+
+. Astra Control Center にログインします。
+. すべての管理対象クラスタとアプリケーションが引き続き存在し、保護されていることを確認します。
+
+
+
+
+== ロードバランシング用の入力を設定します
+
+Kubernetes 入力オブジェクトを設定して、クラスタ内でのロードバランシングなどのサービスへの外部アクセスを管理できます。
+
+* デフォルトアップグレードでは、一般的な入力配置が使用されます。この場合は、入力コントローラまたは入力リソースも設定する必要があります。
+* 入力コントローラが不要で、すでに持っているものを保持したい場合は、を設定します `ingressType` 終了： `AccTraefik`。
+
+
+
+NOTE: サービスタイプ「 LoadBalancer 」および入力の詳細については、を参照してください link:../get-started/requirements.html["要件"]。
+
+この手順は、使用する入力コントローラのタイプによって異なります。
+
+* nginx 入力コントローラ
+* OpenShift 入力コントローラ
+
+
+.必要なもの
+* CR 仕様で、
++
+** 状況 `crd.externalTraefik` が存在し、に設定されている必要があります `false` または
+** 状況 `crd.externalTraefik` はです `true`、 `crd.shouldUpgrade` もです `true`。
+
+
+* が必要です https://kubernetes.io/docs/concepts/services-networking/ingress-controllers["入力コントローラ"] すでに導入されている必要があります。
+* 。 https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class["入力クラス"] 入力コントローラに対応するものがすでに作成されている必要があります。
+* V1.19 と v1.21 の間で Kubernetes のバージョンを使用している。
+
+
+.Nginx Ingress Controller の手順
+. 既存のシークレットを使用します `secure-testing-cert` または、タイプのシークレットを作成します[`kubernetes.io/tls`]をクリックします `netapp-acc` （またはカスタム名前付き）ネームスペース。を参照してください https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets["TLS シークレット"]。
+. 入力リソースをに配置します `netapp-acc` （またはカスタム名前付き）非推奨スキーマまたは新しいスキーマの名前空間：
++
+.. 廃止されたスキーマについては、次の例を参照してください。
++
+[listing]
+----
+apiVersion: extensions/v1beta1
+kind: IngressClass
+metadata:
+  name: ingress-acc
+  namespace: [netapp-acc or custom namespace]
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  tls:
+  - hosts:
+    - <ACC address>
+    secretName: [tls secret name]
+  rules:
+  - host: [ACC address]
+    http:
+      paths:
+      - backend:
+        serviceName: traefik
+        servicePort: 80
+        pathType: ImplementationSpecific
+----
+.. 新しいスキーマについては、次の例を参照してください。
+
+
++
+[listing]
+----
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: netapp-acc-ingress
+  namespace: [netapp-acc or custom namespace]
+spec:
+  ingressClassName: [class name for nginx controller]
+  tls:
+  - hosts:
+    - <ACC address>
+    secretName: [tls secret name]
+  rules:
+  - host: <ACC address>
+    http:
+      paths:
+        - path:
+          backend:
+            service:
+              name: traefik
+              port:
+                number: 80
+          pathType: ImplementationSpecific
+----
+
+
+.OpenShift 入力コントローラの手順
+. 証明書を調達し、 OpenShift ルートで使用できるようにキー、証明書、および CA ファイルを取得します。
+. OpenShift ルートを作成します。
++
+[listing]
+----
+oc create route edge --service=traefik
+--port=web -n [netapp-acc or custom namespace]
+--insecure-policy=Redirect --hostname=<ACC address>
+--cert=cert.pem --key=key.pem
+----
+
+
+
+
+=== 入力セットアップを確認します
+
+入力セットアップを確認してから、続行できます。
+
+. Traefikがに変更されていることを確認します `clusterIP` ロードバランサから：
++
+[listing]
+----
+kubectl get service traefik -n [netapp-acc or custom namespace]
+----
+. Traefik でルートを確認します。
++
+[listing]
+----
+Kubectl get ingressroute ingressroutetls -n [netapp-acc or custom namespace]
+-o yaml | grep "Host("
+----
++
+
+NOTE: 結果は空である必要があります。
+
+
