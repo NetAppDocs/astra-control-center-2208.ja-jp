@@ -1,0 +1,2859 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head class="at-element-marker">
+  <title>標準の手順で Astra Control Center をインストールします</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="標準の手順で Astra Control Center をインストールします" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/ja-jp/astra-control-center-2208/get-started/install_acc.html" />
+	<meta property="og:description" content="環境に関するいくつかの前提条件に対処した後に Astra Control Center をインストールするには、バンドルをダウンロードして、説明されている手順に従ってインストールします。" />
+  <meta property="og:image" content="https://docs.netapp.com/ja-jp/astra-control-center-2208/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="環境に関するいくつかの前提条件に対処した後に Astra Control Center をインストールするには、バンドルをダウンロードして、説明されている手順に従ってインストールします。">
+  <meta name="keywords" content=" astra installation, install astra control center, how to install astra control, deploy, download from netapp support"><!-- Icons -->
+  <link rel="icon" href="/ja-jp/astra-control-center-2208/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/ja-jp/astra-control-center-2208/css/netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/ja-jp/astra-control-center-2208/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/ja-jp/astra-control-center-2208/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel='stylesheet' href='/ja-jp/astra-control-center-2208/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    function addAdobeLaunch(adobeId) {
+      var head = document.getElementsByTagName('head')[0];
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/"+adobeId+".min.js";
+      head.appendChild(adobe);
+    }
+
+    function addGoogleAnalytics(gtagId) {
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id="+gtagId;
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gtagId);
+    }
+
+    function addConsent(consentId) {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/"+consentId+"/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = consentId;
+      head.appendChild(onetrustScript);
+    }addConsent("72570c5c-fe30-465f-b0e0-b77f7fb4ae34");
+    addAdobeLaunch("launch-e9ff3acac59f");
+    addGoogleAnalytics("UA-81697994-3");function OptanonWrapper() { }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/ja-jp/astra-control-center-2208/js/na-search.js'></script><script src='/ja-jp/astra-control-center-2208/js/na-pagenav.js'></script><script src='/ja-jp/astra-control-center-2208/js/na-utility.js'></script>
+  <script src='/ja-jp/astra-control-center-2208/js/clouddocs.js'></script>
+  <script src='/ja-jp/astra-control-center-2208/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/ja-jp/astra-control-center-2208/js/toc.js'></script>
+  <script src='/ja-jp/astra-control-center-2208/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+          $(".sidebar-nav-container").on("scroll", function() {
+            $.cookie("sidebarScroll", $(".sidebar-nav-container").scrollTop(), {
+              path    : "/ja-jp/astra-control-center-2208"  
+            });
+          });
+          $(function() {
+            if ($.cookie("sidebarScroll")) {
+              $(".sidebar-nav-container").scrollTop($.cookie("sidebarScroll"));
+            }
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/ja-jp/astra-control-center-2208/js/custom-dropdown.js'></script>
+  <script src='/ja-jp/astra-control-center-2208/js/FileSaver.min.js'></script>
+  <script src='/ja-jp/astra-control-center-2208/js/jszip-utils.min.js'></script>
+  <script src='/ja-jp/astra-control-center-2208/js/jszip.min.js'></script>
+  <script src='/ja-jp/astra-control-center-2208/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar"><div id="version-dropdown-new" class="custom-dropdown" >
+  <div class="custom-dropdown-select unselected" title="Astra Control Center の略 22.08">
+    <label>バージョン</label>
+    <span translate="no" class="notranslate">Astra Control Center の略 22.08</span>
+    <img src="/ja-jp/astra-control-center-2208/images/chevron_up.svg" alt="" class="custom-icon chevrondown invisible" />
+    <img src="/ja-jp/astra-control-center-2208/images/chevron_down.svg" alt="" class="custom-icon chevronup" />
+  </div>
+
+  <ul class="custom-dropdown-menu"><li>
+      
+      <a href="https://docs.netapp.com/ja-jp/astra-control-center/get-started/install_acc.html" target="_self">
+        <span translate="no" class="notranslate"><span>Astra Control Center の略</span><span class="version"> 22.08</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/astra-control-center-2204/get-started/install_acc.html" target="_self">
+        <span translate="no" class="notranslate"><span>Astra Control Center の略</span><span class="version"> 22.04</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/astra-control-center-2112/get-started/install_acc.html" target="_self">
+        <span translate="no" class="notranslate"><span>Astra Control Center の略</span><span class="version"> 21.12</span></span>
+      </a>
+                     
+    </li>
+    <li>
+      
+      <a href="https://docs.netapp.com/ja-jp/astra-control-center-2108/get-started/install_acc.html" target="_self">
+        <span translate="no" class="notranslate"><span>Astra Control Center の略</span><span class="version"> 21.08</span></span>
+      </a>
+                     
+    </li>
+    
+  </ul>
+</div><div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/astra-control-center-2208/issues/new?body=Page%3A%20[標準の手順で Astra Control Center をインストールします](https://docs.netapp.com/ja-jp/astra-control-center-2208/get-started/install_acc.html)&template=public-issue-template.md" class="page-nav-contribute-link" role="button"><img src="/ja-jp/astra-control-center-2208/images/discuss-sm.svg" alt="" class="github-icon" />ドキュメントの変更をリクエスト</a><a target="_blank" href="https://github.com/NetAppDocs/astra-control-center-2208/blob/main/get-started/install_acc.adoc" class="page-nav-contribute-link" role="button"><img src="/ja-jp/astra-control-center-2208/images/edit-sm.svg" alt="" class="github-icon" />GitHub で編集</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/ja-jp/astra-control-center-2208/images/article-sm.svg" alt="" class="github-icon" />寄稿者向けガイド</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">このページ</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">製品とソリューション</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">サポートとトレーニング</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">コミュニティ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">ブログ</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">ユーザ事例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/ja-jp/astra-control-center-2208/search.html"
+          data-type="widget" 
+          data-placeholder="ドキュメントを検索"
+          data-no-results-found="{query}に該当する結果はありません"
+          data-did-you-mean="{suggestion} を検索"
+          data-no-results-found-did-you-mean="{query} に該当する結果はありません。{suggestion} の間違いではありませんか?"
+          data-results-found="{hitCount} 件見つかりました"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
+          data-sk-es-pf-indexes=""
+          data-flavor=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">日本語</span>
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/ja-jp/astra-control-center-2208/get-started/install_acc.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/astra-control-center-2208/get-started/install_acc.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/astra-control-center-2208/get-started/install_acc.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/astra-control-center-2208/get-started/install_acc.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/astra-control-center-2208/get-started/install_acc.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/fr-fr/astra-control-center-2208/get-started/install_acc.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/de-de/astra-control-center-2208/get-started/install_acc.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+        </li></ul>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <button id="btn-sidebar-collapse" onclick="hideSidebar()"><img src="/ja-jp/astra-control-center-2208/images/collapse.png" alt="ナビゲーション パネルを閉じる"></button>
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>利用可能なPDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/ja-jp/astra-control-center-2208/pdfs/fullsite-sidebar/Astra_Control_Center_22_08ドキュメント.pdf" >
+          <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>このドキュメントサイトのPDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/リリースノート.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            リリースノート
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/既知の問題.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            既知の問題
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/概念.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            概念
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/はじめに.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            はじめに
+          </a>
+          
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/インストールの概要.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            インストールの概要
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/Astra_Control_Center_をインストールします.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            Astra Control Center をインストールします
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/Astra_Control_Center_をセットアップします.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            Astra Control Center をセットアップします
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/Astra_を使用する.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            Astra を使用する
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/アプリを保護します.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            アプリを保護します
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/アプリケーション実行フックを管理します.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            アプリケーション実行フックを管理します
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/アプリケーションとクラスタの健常性を監視.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            アプリケーションとクラスタの健常性を監視
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/アカウントを管理します.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            アカウントを管理します
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/REST_API_で自動化.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            REST API で自動化
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/ja-jp/astra-control-center-2208/pdfs/sidebar/知識とサポート.pdf" 
+            
+          >
+            <img src="/ja-jp/astra-control-center-2208/images/pdf.png" alt="" width="16" height="16"/>
+            知識とサポート
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/ja-jp/astra-control-center-2208/images/pdf-zip.png" alt="" width="16" height="16"/>
+      <pre>個別のPDFドキュメントのコレクション<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="prod-nav" id="product-nav">
+  <a target="_self" class="prod-fam-nav" href="https://docs.netapp.com/ja-jp/astra-family/"><img src="/ja-jp/astra-control-center-2208/images/left_arrow.png" alt=""><pre>すべてのAstraドキュメント</pre></a>
+</div><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Control Center 22.08ドキュメント"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/index.html">
+        Astra Control Center 22.08ドキュメント
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="リリースノート"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="/ja-jp/astra-control-center-2208/release-notes/rn_overview.html">
+        <div class="na-navbar-padding"> リリースノート</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="このリリースの Astra Control Center の新機能"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/release-notes/whats-new.html">
+        このリリースの Astra Control Center の新機能
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既知の問題"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="/ja-jp/astra-control-center-2208/release-notes/known-issues.html">
+        <div class="na-navbar-padding"> 既知の問題</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Data Store およびこの Astra Control Center リリースでの既知の問題"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/release-notes/known-issues-ads.html">
+        Astra Data Store およびこの Astra Control Center リリースでの既知の問題
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既知の制限"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/release-notes/known-limitations.html">
+        既知の制限
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="概念"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 概念</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Controlの詳細をご確認ください"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/concepts/intro.html">
+        Astra Controlの詳細をご確認ください
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アーキテクチャとコンポーネント"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/concepts/architecture.html">
+        アーキテクチャとコンポーネント
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="データ保護"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/concepts/data-protection.html">
+        データ保護
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ライセンス"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/concepts/licensing.html">
+        ライセンス
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリケーション管理について理解する"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/learn/app-management.html">
+        アプリケーション管理について理解する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージクラスと PV サイズ"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/concepts/choose-class-and-size.html">
+        ストレージクラスと PV サイズ
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ユーザロールとネームスペース"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/concepts/user-roles-namespaces.html">
+        ユーザロールとネームスペース
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> はじめに</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Control Center の要件"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/requirements.html">
+        Astra Control Center の要件
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Control Center のクイックスタート"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/quick-start.html">
+        Astra Control Center のクイックスタート
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="インストールの概要"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="/ja-jp/astra-control-center-2208/get-started/install_overview.html">
+        <div class="na-navbar-padding"> インストールの概要</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Control Center をインストールします"
+      data-li-level="3" 
+      class="subfolders  active "
+    ><a href="/ja-jp/astra-control-center-2208/get-started/install_acc.html">
+        <div class="na-navbar-padding"> Astra Control Center をインストールします</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Control CenterクラスタのCRオプションを理解する"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/acc_cluster_cr_options.html">
+        Astra Control CenterクラスタのCRオプションを理解する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ポッドのセキュリティポリシーの制限事項を理解します"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/understand-psp-restrictions.html">
+        ポッドのセキュリティポリシーの制限事項を理解します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="外部証明書マネージャを設定します"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/cert-manager-prereqs.html">
+        外部証明書マネージャを設定します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="OpenShift OperatorHub を使用して Astra Control Center をインストールします"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/acc_operatorhub_install.html">
+        OpenShift OperatorHub を使用して Astra Control Center をインストールします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP ストレージバックエンドに Astra Control Center をインストールします"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/install_acc-cvo.html">
+        Cloud Volumes ONTAP ストレージバックエンドに Astra Control Center をインストールします
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Control Center をセットアップします"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="/ja-jp/astra-control-center-2208/get-started/setup_overview.html">
+        <div class="na-navbar-padding"> Astra Control Center をセットアップします</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラスタを追加するための前提条件"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/add-cluster-reqs.html">
+        クラスタを追加するための前提条件
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="カスタム TLS 証明書を追加します"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/add-custom-tls-certificate.html">
+        カスタム TLS 証明書を追加します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="カスタムのポッドセキュリティポリシーを作成します"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/acc-create-podsecuritypolicy.html">
+        カスタムのポッドセキュリティポリシーを作成します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="よく寄せられる質問"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/get-started/faq.html">
+        よく寄せられる質問
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra を使用する"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Astra を使用する</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリの管理を開始します"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/manage-apps.html">
+        アプリの管理を開始します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリを保護します"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> アプリを保護します</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="保護の概要"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/protection-overview.html">
+        保護の概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリを保護します"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/protect-apps.html">
+        アプリを保護します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリケーションのリストア"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/restore-apps.html">
+        アプリケーションのリストア
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリケーションをリモートシステムにレプリケートします"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/replicate_snapmirror.html">
+        アプリケーションをリモートシステムにレプリケートします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリケーションのクローン作成と移行"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/clone-apps.html">
+        アプリケーションのクローン作成と移行
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリケーション実行フックを管理します"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="/ja-jp/astra-control-center-2208/use/execution-hooks.html">
+        <div class="na-navbar-padding"> アプリケーション実行フックを管理します</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="実行フックの例"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/execution-hook-examples.html">
+        実行フックの例
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリケーションとクラスタの健常性を監視"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> アプリケーションとクラスタの健常性を監視</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ダッシュボードの概要"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/view-dashboard.html">
+        ダッシュボードの概要
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クラスタの健常性と詳細"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/view-clusters.html">
+        クラスタの健常性と詳細
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリケーションの健全性と詳細"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/view-apps.html">
+        アプリケーションの健全性と詳細
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アカウントを管理します"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> アカウントを管理します</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ユーザを管理します"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/manage-users.html">
+        ユーザを管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ロールの管理"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/manage-roles.html">
+        ロールの管理
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="通知を管理します"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/manage-notifications.html">
+        通知を管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="クレデンシャルを管理する"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/manage-credentials.html">
+        クレデンシャルを管理する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アカウントのアクティビティを監視"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/view-account-activity.html">
+        アカウントのアクティビティを監視
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="既存のライセンスを更新する"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/update-licenses.html">
+        既存のライセンスを更新する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="リポジトリ接続を管理します"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/manage-connections.html">
+        リポジトリ接続を管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ソフトウェアパッケージを管理します"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/manage-packages-acc.html">
+        ソフトウェアパッケージを管理します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="バケットを管理する"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/manage-buckets.html">
+        バケットを管理する
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ストレージバックエンドを管理します"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/manage-backend.html">
+        ストレージバックエンドを管理します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Insights とFluentdを使用してインフラを監視します"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/monitor-protect.html">
+        Cloud Insights とFluentdを使用してインフラを監視します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="アプリケーションとクラスタの管理を解除します"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/unmanage.html">
+        アプリケーションとクラスタの管理を解除します
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Control Center をアップグレードします"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/upgrade-acc.html">
+        Astra Control Center をアップグレードします
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Astra Control Center をアンインストールします"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/use/uninstall_acc.html">
+        Astra Control Center をアンインストールします
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="REST API で自動化"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> REST API で自動化</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="はじめに"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/rest-api/api-intro.html">
+        はじめに
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="知識とサポート"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> 知識とサポート</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="トラブルシューティング"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/support/troubleshooting-acc.html">
+        トラブルシューティング
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="ヘルプを表示します"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/support/get-help.html">
+        ヘルプを表示します
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="以前のバージョン"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/acc-earlier-versions.html">
+        以前のバージョン
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="法的通知"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/ja-jp/astra-control-center-2208/legal-notices.html">
+        法的通知
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+<script>$("#mysidebar li.active").parents('ul').css("display","block");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <div class="ie-utility">
+  <button id="btn-sidebar-expand" onclick="showSidebar()"><img src="/ja-jp/astra-control-center-2208/images/expand.png" alt="ナビゲーション パネルを展開する"></button>
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/ja-jp/astra-family/">Astra</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/ja-jp/astra-control-center-2208/">Astra&nbsp;Control&nbsp;Center&nbsp;22.08&nbsp;documentation</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 日本語は機械翻訳による参考訳です。内容に矛盾や不一致があった場合には、英語の内容が優先されます。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">標準の手順で Astra Control Center をインストールします</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-11-22 15:51:35 +0000">11/22/2022</time>
+    
+  
+
+<span>寄稿者
+</span>
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Astra Control Center をインストールするには、NetApp Support Siteからインストールバンドルをダウンロードし、次の手順を実行して、 Astra Control Center Operator と Astra Control Center を環境にインストールします。この手順を使用して、インターネット接続環境またはエアギャップ環境に Astra コントロールセンターをインストールできます。</p>
+</div>
+<div class="paragraph">
+<p>Red Hat OpenShift環境では、を使用できます <a href="../get-started/acc_operatorhub_install.html">"代替手順"</a> OpenShift OperatorHub を使用して Astra Control Center をインストールします。</p>
+</div>
+<div class="ulist">
+<div class="title">必要なもの</div>
+<ul>
+<li>
+<p><a href="requirements.html">"インストールを開始する前に、 Astra Control Center の導入環境を準備します"</a>。</p>
+</li>
+<li>
+<p>使用環境でポッドセキュリティポリシーを設定または設定したい場合は、ポッドセキュリティポリシーと、それらがAstra Control Centerのインストールに与える影響について理解しておいてください。を参照してください <a href="understand-psp-restrictions.html">"ポッドのセキュリティポリシーの制限事項を理解します"</a>。</p>
+</li>
+<li>
+<p>すべてのクラスタオペレータが正常な状態であり、使用可能であることを確認します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl get clusteroperators</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>すべての API サービスが正常な状態であり、使用可能であることを確認します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl get apiservices</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>使用するネットアップFQDNがこのクラスタにルーティング可能であることを確認します。つまり、内部 DNS サーバに DNS エントリがあるか、すでに登録されているコア URL ルートを使用しています。</p>
+</li>
+<li>
+<p>クラスタにcert-managerがすでに存在する場合は、いくつかを実行する必要があります <a href="../get-started/cert-manager-prereqs.html">"事前に必要な手順"</a> そのため、Astra Control Centerは独自の証明書管理ツールをインストールしません。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Astra Control Center のインストールプロセスでは、次のことが実行されます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Astraコンポーネントをにインストールします <code>netapp-acc</code> （またはカスタム名）ネームスペース。</p>
+</li>
+<li>
+<p>デフォルトアカウントを作成します。</p>
+</li>
+<li>
+<p>デフォルトの管理ユーザのEメールアドレスとデフォルトのワンタイムパスワードを設定します。このユーザには、UIへの初回ログインに必要なシステムのオーナーロールが割り当てられます。</p>
+</li>
+<li>
+<p>Astra Control Center のすべてのポッドが実行されていることを確認するのに役立ちます。</p>
+</li>
+<li>
+<p>Astra の UI をインストールします。</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/important.svg" alt="重要">
+</td>
+<td class="content">
+（環境 the Astra Data Store Early Access Program（EAP）リリースのみ）Astra Control Centerを使用してAstraデータストアを管理し、VMwareワークフローを有効にする場合は、Astra Control Centerのみをに導入します <code>pcloud</code> ではなく、ネームスペースで指定します <code>netapp-acc</code> この手順 の手順で説明するネームスペースまたはカスタムネームスペース。
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/important.svg" alt="重要">
+</td>
+<td class="content">
+すべてのAstra Control Centerポッドが削除されないようにするため、インストールプロセス全体で次のコマンドを実行しないでください。 <code>kubectl delete -f astra_control_center_operator_deploy.yaml</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+Docker Engine の代わりに Red Hat の Podman を使用している場合は、 Docker コマンドの代わりに Podman コマンドを使用できます。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Astra Control Center をインストールするには、次の手順に従います。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>and unpack the Astra Control Center bundle</p>
+</li>
+<li>
+<p>the NetApp Astra kubectl plugin</p>
+</li>
+<li>
+<p>the images to your local registry</p>
+</li>
+<li>
+<p>up namespace and secret for registries with auth requirements</p>
+</li>
+<li>
+<p>the Astra Control Center operator</p>
+</li>
+<li>
+<p>Astra Control Center</p>
+</li>
+<li>
+<p>Astra Control Center and operator installation</p>
+</li>
+<li>
+<p>system status</p>
+</li>
+<li>
+<p>up ingress for load balancing</p>
+</li>
+<li>
+<p>in to the Astra Control Center UI</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="astra-control-centerバンドルをダウンロードして開梱します">Astra Control Centerバンドルをダウンロードして開梱します</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Astra Control Center バンドルをダウンロードします (<code>astra-control-center-[version].tar.gz</code>）をクリックします <a href="https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab" target="_blank" rel="noopener">"NetApp Support Site"</a>。</p>
+</li>
+<li>
+<p>から Astra Control Center 証明書とキーの zip をダウンロードします <a href="https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab" target="_blank" rel="noopener">"NetApp Support Site"</a>。</p>
+</li>
+<li>
+<p>（任意）次のコマンドを使用して、バンドルのシグニチャを確認します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">openssl dgst -sha256 -verify AstraControlCenter-public.pub -signature astra-control-center-[version].tar.gz.sig astra-control-center-[version].tar.gz</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>画像を抽出します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">tar -vxzf astra-control-center-[version].tar.gz</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ネットアップastra-kubectlプラグインをインストール">ネットアップAstra kubectlプラグインをインストール</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ネットアップアストラ <code>kubectl</code> コマンドラインプラグインにより、Astra Control Centerの導入とアップグレードに関連する一般的なタスクを実行する時間を節約できます。</p>
+</div>
+<div class="paragraph">
+<p>ネットアップでは、プラグイン用のバイナリを提供しており、CPUアーキテクチャやオペレーティングシステムが異なる場合はそのプラグインをこのタスクを実行する前に、使用しているCPUとオペレーティングシステムを把握しておく必要があります。LinuxおよびMacオペレーティングシステムでは、を使用できます <code>uname -a</code> この情報を収集するためのコマンドです。</p>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>使用可能なネットアップAstraを選択します <code>kubectl</code> プラグインバイナリ。オペレーティングシステムとCPUアーキテクチャに必要なファイルの名前をメモします。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">ls kubectl-astra/</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>ファイルを標準と同じ場所にコピーします <code>kubectl</code> ユーティリティ。この例では、を使用しています <code>kubectl</code> ユーティリティはにあります <code>/usr/local/bin</code> ディレクトリ。交換してください <code>&lt;binary-name&gt;</code> 必要なファイル名を使用して、次の操作を実行します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">cp kubectl-astra/&lt;binary-name&gt; /usr/local/bin/kubectl-astra</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="イメージをローカルレジストリに追加します">イメージをローカルレジストリに追加します</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>コンテナエンジンに応じた手順を実行します。</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock tabbed-block">
+<div class="content">
+<div class="openblock">
+<div class="title">Docker です</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Astraディレクトリに移動します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">cd acc</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>[[[[&lt;/Z1&gt;[&lt;/Z1&gt;[&lt;/Z1&gt;[&lt;/Z1&gt;[&lt;/Z1&gt;[&lt;/Z1&gt;[&lt;/Z1&gt;[&lt;/Z1&gt;&lt;/Z1&gt;_image_local_registry_push]]]]]]]]]]&lt;/Z2&gt;アストラControl Centerイメージディレクトリ内のパッケージイメージをローカルレジストリにプッシュします。&lt;/Z3&gt;コマンドを実行する前に、次の置き換えを行ってください。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>bundle_fileをAstra Controlバンドルファイルの名前に置き換えます（例： <code>acc.manifest.yaml</code>）。</p>
+</li>
+<li>
+<p>my_registryをDockerリポジトリのURLに置き換えます。</p>
+</li>
+<li>
+<p>my_registry_userをユーザー名に置き換えます。</p>
+</li>
+<li>
+<p>my_registry_tokenをレジストリの認証済みトークンに置き換えます。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl astra packages push-images -m BUNDLE_FILE -r MY_REGISTRY -u MY_REGISTRY_USER -p MY_REGISTRY_TOKEN</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="title">ポドマン</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>レジストリにログインします。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">podman login [your_registry_path]</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>次のスクリプトを実行して、コメントに記載されているように&lt;your _registry&gt;を置き換えます。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh"># You need to be at the root of the tarball.
+# You should see these files to confirm correct location:
+#   acc.manifest.yaml
+#   acc/
+
+# Replace &lt;YOUR_REGISTRY&gt; with your own registry (e.g registry.customer.com or registry.customer.com/testing, etc..)
+export REGISTRY=&lt;YOUR_REGISTRY&gt;
+export PACKAGENAME=acc
+export PACKAGEVERSION=22.08.1-26
+export DIRECTORYNAME=acc
+for astraImageFile in $(ls ${DIRECTORYNAME}/images/*.tar) ; do
+  # Load to local cache
+  astraImage=$(podman load --input ${astraImageFile} | sed 's/Loaded image(s): //')
+
+  # Remove path and keep imageName.
+  astraImageNoPath=$(echo ${astraImage} | sed 's:.*/::')
+
+  # Tag with local image repo.
+  podman tag ${astraImage} ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+
+  # Push to the local repo.
+  podman push ${REGISTRY}/netapp/astra/${PACKAGENAME}/${PACKAGEVERSION}/${astraImageNoPath}
+done</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="認証要件を持つレジストリのネームスペースとシークレットを設定します">認証要件を持つレジストリのネームスペースとシークレットを設定します</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Astra Control Centerホストクラスタ用のKUBECONFIGをエクスポートします。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">export KUBECONFIG=[file path]</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>認証が必要なレジストリを使用する場合は、次の手順を実行する必要があります。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>を作成します <code>netapp-acc-operator</code> ネームスペース：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl create ns netapp-acc-operator</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>対応：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>namespace/netapp-acc-operator created</pre>
+</div>
+</div>
+</li>
+<li>
+<p>のシークレットを作成します <code>netapp-acc-operator</code> ネームスペース：Docker 情報を追加して次のコマンドを実行します。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+プレースホルダ <code>your_registry_path</code> 以前にアップロードした画像の場所と一致する必要があります（例： <code>[Registry_URL]/netapp/astra/astracc/22.08.1-26</code>）。
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl create secret docker-registry astra-registry-cred -n netapp-acc-operator --docker-server=[your_registry_path] --docker-username=[username] --docker-password=[token]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>回答例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>secret/astra-registry-cred created</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+シークレットの生成後にネームスペースを削除する場合は、ネームスペースが再作成されたあとにネームスペースのシークレットを再生成する必要があります。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>を作成します <code>netapp-acc</code> （またはカスタムの名前付き）ネームスペース。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl create ns [netapp-acc or custom namespace]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>回答例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>namespace/netapp-acc created</pre>
+</div>
+</div>
+</li>
+<li>
+<p>のシークレットを作成します <code>netapp-acc</code> （またはカスタムの名前付き）ネームスペース。Docker 情報を追加して次のコマンドを実行します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl create secret docker-registry astra-registry-cred -n [netapp-acc or custom namespace] --docker-server=[your_registry_path] --docker-username=[username] --docker-password=[token]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>応答</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>secret/astra-registry-cred created</pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>[[[[sup_kubeconfig _secret]] （オプション）インストール後に Astra Control Center でクラスタを自動的に管理する場合は、このコマンドを使用して展開する Astra Control Center ネームスペース内のシークレットとして kubeconfig を指定する必要があります。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl create secret generic [acc-kubeconfig-cred or custom secret name] --from-file=&lt;path-to-your-kubeconfig&gt; -n [netapp-acc or custom namespace]</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="astra-control-center-オペレータを設置します">Astra Control Center オペレータを設置します</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>ディレクトリを変更します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">cd manifests</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Astra Control Centerオペレータ配置YAMLを編集します (<code>astra_control_center_operator_deploy.yaml</code>)を参照して、ローカルレジストリとシークレットを参照してください。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">vim astra_control_center_operator_deploy.yaml</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+注釈付きサンプルYAMLは以下の手順に従います。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>認証が必要なレジストリを使用する場合は、のデフォルト行を置き換えます <code>imagePullSecrets: []</code> 次の条件を満たす場合：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">imagePullSecrets:
+- name: &lt;astra-registry-cred&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>変更 <code>[your_registry_path]</code> をクリックします <code>kube-rbac-proxy</code> でイメージをプッシュしたレジストリパスへのイメージ ,前の手順。</p>
+</li>
+<li>
+<p>変更 <code>[your_registry_path]</code> をクリックします <code>acc-operator-controller-manager</code> でイメージをプッシュしたレジストリパスへのイメージ ,前の手順。</p>
+</li>
+<li>
+<p>（ Astra データストアプレビューを使用するインストールの場合）この問題に関する既知の情報を参照してください <a href="https://docs.netapp.com/us-en/astra-data-store-2112/release-notes/known-issues.html#mongodb-deployment-with-default-liveness-probe-value-fails-with-pods-in-crash-loop" target="_blank" rel="noopener">"ストレージクラスのプロビジョニングと YAML に対する追加の変更"</a>。</p>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    control-plane: controller-manager
+  name: acc-operator-controller-manager
+  namespace: netapp-acc-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  template:
+    metadata:
+      labels:
+        control-plane: controller-manager
+    spec:
+      containers:
+      - args:
+        - --secure-listen-address=0.0.0.0:8443
+        - --upstream=http://127.0.0.1:8080/
+        - --logtostderr=true
+        - --v=10
+        <strong>image: [your_registry_path]/kube-rbac-proxy:v4.8.0</strong>
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 8443
+          name: https
+      - args:
+        - --health-probe-bind-address=:8081
+        - --metrics-bind-address=127.0.0.1:8080
+        - --leader-elect
+        command:
+        - /manager
+        env:
+        - name: ACCOP_LOG_LEVEL
+          value: "2"
+        <strong>image: [your_registry_path]/acc-operator:[version x.y.z]</strong>
+        imagePullPolicy: IfNotPresent
+      <strong>imagePullSecrets: []</strong></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Astra Control Center オペレータをインストールします。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl apply -f astra_control_center_operator_deploy.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>回答例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>namespace/netapp-acc-operator created
+customresourcedefinition.apiextensions.k8s.io/astracontrolcenters.astra.netapp.io created
+role.rbac.authorization.k8s.io/acc-operator-leader-election-role created
+clusterrole.rbac.authorization.k8s.io/acc-operator-manager-role created
+clusterrole.rbac.authorization.k8s.io/acc-operator-metrics-reader created
+clusterrole.rbac.authorization.k8s.io/acc-operator-proxy-role created
+rolebinding.rbac.authorization.k8s.io/acc-operator-leader-election-rolebinding created
+clusterrolebinding.rbac.authorization.k8s.io/acc-operator-manager-rolebinding created
+clusterrolebinding.rbac.authorization.k8s.io/acc-operator-proxy-rolebinding created
+configmap/acc-operator-manager-config created
+service/acc-operator-controller-manager-metrics-service created
+deployment.apps/acc-operator-controller-manager created</pre>
+</div>
+</div>
+</li>
+<li>
+<p>ポッドが実行中であることを確認します</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl get pods -n netapp-acc-operator</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="astra-control-center-を設定します">Astra Control Center を設定します</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Astra Control Centerカスタムリソース（CR）ファイルを編集します (<code>astra_control_center_min.yaml</code>)アカウント、AutoSupport 、レジストリ、およびその他の必要な設定を行うには、次の手順を実行します。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+<code>astra_control_center_min.yaml</code> はデフォルトのCRで、ほとんどのインストールに適しています。すべてのことをよく理解してください <a href="../get-started/acc_cluster_cr_options.html">"CRオプションとその可能性のある値"</a> お客様の環境にAstra Control Centerを正しく導入できるようにするため。環境で追加のカスタマイズが必要な場合は、を使用できます <code>astra_control_center.yaml</code> 代替CRとして。
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">vim astra_control_center_min.yaml</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/important.svg" alt="重要">
+</td>
+<td class="content">
+許可が不要なレジストリを使用している場合は、を削除する必要があります  <code>secret</code> ラインの内側 <code>imageRegistry</code> または、インストールが失敗します。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>変更 <code>[your_registry_path]</code> 前の手順でイメージをプッシュしたレジストリパスに移動します。</p>
+</li>
+<li>
+<p>を変更します <code>accountName</code> stringには、アカウントに関連付ける名前を指定します。</p>
+</li>
+<li>
+<p>を変更します <code>astraAddress</code> ブラウザからAstraにアクセスする際に使用するFQDNを文字列で指定します。使用しないでください <code>http://</code> または <code>https://</code> をクリックします。この FQDN をコピーしてで使用します  in to the Astra Control Center UI,後の手順。</p>
+</li>
+<li>
+<p>を変更します <code>email</code> デフォルトの初期管理者アドレスを表す文字列。この E メールアドレスをコピーしてで使用します  in to the Astra Control Center UI,後の手順。</p>
+</li>
+<li>
+<p>変更 <code>enrolled</code> を選択しますAutoSupport <code>false</code> インターネットに接続されていないか、または保持されているサイト <code>true</code> 接続されているサイト用。</p>
+</li>
+<li>
+<p>外部証明書マネージャを使用する場合は、に次の行を追加します <code>spec</code>：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">spec:
+  crds:
+    externalCertManager: true</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>（オプション）名を追加します <code>firstName</code> 姓を入力します <code>lastName</code> アカウントに関連付けられているユーザのこの手順は、 UI ですぐに実行することもあとで実行することもできます。</p>
+</li>
+<li>
+<p>（オプション）を変更します <code>storageClass</code> インストールに必要な場合、別のTridentストレージクラスリソースへの値。</p>
+</li>
+<li>
+<p>（オプション）インストール後に Astra Control Center でクラスタを自動的に管理する場合は ,このクラスタの kubeconfig を含むシークレットを作成しましたをクリックし、という名前のYAMLファイルに新しいフィールドを追加して、シークレットの名前を指定します <code>astraKubeConfigSecret: "acc-kubeconfig-cred or custom secret name"</code></p>
+</li>
+<li>
+<p>次のいずれかの手順を実行します。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>* その他の入力コントローラ（ ingressType: Generic ） * ：これはアストラコントロールセンターでのデフォルトのアクションです。Astra Control Center を展開したら、 Astra Control Center を URL で公開するように入力コントローラを設定する必要があります。</p>
+<div class="paragraph">
+<p>デフォルトのAstra Control Centerインストールでは、ゲートウェイがセットアップされます (<code>service/traefik</code>）を入力します <code>ClusterIP</code>。このデフォルトのインストールでは、トラフィックをルーティングするために Kubernetes IngressController/Ingress を追加で設定する必要があります。入力を使用する場合は、を参照してください <a href="../get-started/install_acc.html#set-up-ingress-for-load-balancing">"ロードバランシング用の入力を設定します"</a>。</p>
+</div>
+</li>
+<li>
+<p><strong>サービスロードバランサ（ingressType: AccTrafik）</strong>: IngressControllerをインストールしない場合、または入力リソースを作成しない場合は、を設定します <code>ingressType</code> 終了： <code>AccTraefik</code>。</p>
+<div class="paragraph">
+<p>これにより、Astra Control Centerが導入されます <code>traefik</code> Gateway as a Kubernetes LoadBalancer type serviceの略。</p>
+</div>
+<div class="paragraph">
+<p>Astra Control Centerは、タイプ「LoadBalancer」のサービスを使用します。 (<code>svc/traefik</code> Astra Control Centerの名前空間）で、アクセス可能な外部IPアドレスが割り当てられている必要があります。お使いの環境でロードバランサが許可されていて、設定されていない場合は、 MetalLB または別の外部サービスロードバランサを使用して、外部 IP アドレスをサービスに割り当てることができます。内部 DNS サーバ構成では、 Astra Control Center に選択した DNS 名を、負荷分散 IP アドレスに指定する必要があります。</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+サービスタイプ「 LoadBalancer 」および入力の詳細については、を参照してください <a href="../get-started/requirements.html">"要件"</a>。
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: astra.netapp.io/v1
+kind: AstraControlCenter
+metadata:
+  name: astra
+spec:
+  <strong>accountName: "Example"</strong>
+  astraVersion: "ASTRA_VERSION"
+  <strong>astraAddress: "astra.example.com"</strong>
+  <strong>astraKubeConfigSecret: "acc-kubeconfig-cred or custom secret name"</strong>
+  <strong>ingressType: "Generic"</strong>
+  autoSupport:
+    <strong>enrolled: true</strong>
+  <strong>email: "[admin@example.com]"</strong>
+  <strong>firstName: "SRE"</strong>
+  <strong>lastName: "Admin"</strong>
+  imageRegistry:
+    <strong>name: "[your_registry_path]"</strong>
+    <strong>secret: "astra-registry-cred"</strong>
+  <strong>storageClass: "ontap-gold"</strong></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="astra-control-center-とオペレータのインストールを完了します">Astra Control Center とオペレータのインストールを完了します</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>前の手順でまだ行っていない場合は、を作成します <code>netapp-acc</code> （またはカスタム）ネームスペース：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl create ns [netapp-acc or custom namespace]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>回答例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>namespace/netapp-acc created</pre>
+</div>
+</div>
+</li>
+<li>
+<p>にAstra Control Centerをインストールします <code>netapp-acc</code> （またはカスタムの）ネームスペース：</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl apply -f astra_control_center_min.yaml -n [netapp-acc or custom namespace]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>回答例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>astracontrolcenter.astra.netapp.io/astra created</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="システムステータスを確認します">システムステータスを確認します</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+OpenShift を使用する場合は、同等の OC コマンドを検証手順に使用できます。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>すべてのシステムコンポーネントが正常にインストールされたことを確認します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl get pods -n [netapp-acc or custom namespace]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>各ポッドのステータスがになっている必要があります <code>Running</code>。システムポッドが展開されるまでに数分かかることがあります。</p>
+</div>
+<div class="exampleblock">
+<div class="title">例 1. 回答例</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>NAME                                     READY  STATUS   RESTARTS AGE
+acc-helm-repo-6b44d68d94-d8m55           1/1    Running  0        13m
+activity-78f99ddf8-hltct                 1/1    Running  0        10m
+api-token-authentication-457nl           1/1    Running  0        9m28s
+api-token-authentication-dgwsz           1/1    Running  0        9m28s
+api-token-authentication-hmqqc           1/1    Running  0        9m28s
+asup-75fd554dc6-m6qzh                    1/1    Running  0        9m38s
+authentication-6779b4c85d-92gds          1/1    Running  0        8m11s
+bucketservice-7cc767f8f8-lqwr8           1/1    Running  0        9m31s
+certificates-549fd5d6cb-5kmd6            1/1    Running  0        9m56s
+certificates-549fd5d6cb-bkjh9            1/1    Running  0        9m56s
+cloud-extension-7bcb7948b-hn8h2          1/1    Running  0        10m
+cloud-insights-service-56ccf86647-fgg69  1/1    Running  0        9m46s
+composite-compute-677685b9bb-7vgsf       1/1    Running  0        10m
+composite-volume-657d6c5585-dnq79        1/1    Running  0        9m49s
+credentials-755fd867c8-vrlmt             1/1    Running  0        11m
+entitlement-86495cdf5b-nwhh2             1/1    Running  2        10m
+features-5684fb8b56-8d6s8                1/1    Running  0        10m
+fluent-bit-ds-rhx7v                      1/1    Running  0        7m48s
+fluent-bit-ds-rjms4                      1/1    Running  0        7m48s
+fluent-bit-ds-zf5ph                      1/1    Running  0        7m48s
+graphql-server-66d895f544-w6hjd          1/1    Running  0        3m29s
+identity-744df448d5-rlcmm                1/1    Running  0        10m
+influxdb2-0                              1/1    Running  0        13m
+keycloak-operator-75c965cc54-z7csw       1/1    Running  0        8m16s
+krakend-798d6df96f-9z2sk                 1/1    Running  0        3m26s
+license-5fb7d75765-f8mjg                 1/1    Running  0        9m50s
+login-ui-7d5b7df85d-l2s7s                1/1    Running  0        3m20s
+loki-0                                   1/1    Running  0        13m
+metrics-facade-599b9d7fcc-gtmgl          1/1    Running  0        9m40s
+monitoring-operator-67cc74f844-cdplp     2/2    Running  0        8m11s
+nats-0                                   1/1    Running  0        13m
+nats-1                                   1/1    Running  0        13m
+nats-2                                   1/1    Running  0        12m
+nautilus-769f5b74cd-k5jxm                1/1    Running  0        9m42s
+nautilus-769f5b74cd-kd9gd                1/1    Running  0        8m59s
+openapi-84f6ccd8ff-76kvp                 1/1    Running  0        9m34s
+packages-6f59fc67dc-4g2f5                1/1    Running  0        9m52s
+polaris-consul-consul-server-0           1/1    Running  0        13m
+polaris-consul-consul-server-1           1/1    Running  0        13m
+polaris-consul-consul-server-2           1/1    Running  0        13m
+polaris-keycloak-0                       1/1    Running  0        8m7s
+polaris-keycloak-1                       1/1    Running  0        5m49s
+polaris-keycloak-2                       1/1    Running  0        5m15s
+polaris-keycloak-db-0                    1/1    Running  0        8m6s
+polaris-keycloak-db-1                    1/1    Running  0        5m49s
+polaris-keycloak-db-2                    1/1    Running  0        4m57s
+polaris-mongodb-0                        2/2    Running  0        13m
+polaris-mongodb-1                        2/2    Running  0        12m
+polaris-mongodb-2                        2/2    Running  0        12m
+polaris-ui-565f56bf7b-zwr8b              1/1    Running  0        3m19s
+polaris-vault-0                          1/1    Running  0        13m
+polaris-vault-1                          1/1    Running  0        13m
+polaris-vault-2                          1/1    Running  0        13m
+public-metrics-6d86d66444-2wbzl          1/1    Running  0        9m30s
+storage-backend-metrics-77c5d98dcd-dbhg5 1/1    Running  0        9m44s
+storage-provider-78c885f57c-6zcv4        1/1    Running  0        9m36s
+telegraf-ds-2l2m9                        1/1    Running  0        7m48s
+telegraf-ds-qfzgh                        1/1    Running  0        7m48s
+telegraf-ds-shrms                        1/1    Running  0        7m48s
+telegraf-rs-bjpkt                        1/1    Running  0        7m48s
+telemetry-service-6684696c64-qzfdf       1/1    Running  0        10m
+tenancy-6596b6c54d-vmpsm                 1/1    Running  0        10m
+traefik-7489dc59f9-6mnst                 1/1    Running  0        3m19s
+traefik-7489dc59f9-xrkgg                 1/1    Running  0        3m4s
+trident-svc-6c8dc458f5-jswcl             1/1    Running  0        10m
+vault-controller-6b954f9b76-gz9nm        1/1    Running  0        11m</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>（オプション）インストールが完了したことを確認するには、を参照してください <code>acc-operator</code> 次のコマンドを使用してログを作成します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl logs deploy/acc-operator-controller-manager -n netapp-acc-operator -c manager -f</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+<code>accHost</code> クラスタの登録は最後の処理の1つです。登録に失敗しても原因 の導入は失敗しません。ログにクラスタ登録エラーが示された場合は、クラスタ追加ワークフローを通じて再度登録を試行できます <a href="../get-started/setup_overview.html#add-cluster">"UI で"</a> または API 。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>すべてのポッドが実行中の場合は、インストールが正常に完了したことを確認します (<code>READY</code> はです <code>True</code>）を使用してAstra Control Centerにログインする際に使用するワンタイムパスワードを取得します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl get AstraControlCenter -n netapp-acc</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>対応：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NAME    UUID                                      VERSION     ADDRESS         READY
+astra   ACC-9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f  22.08.1-26  10.111.111.111  True</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/important.svg" alt="重要">
+</td>
+<td class="content">
+UUIDの値をコピーします。パスワードはです <code>ACC-</code> 続けてUUIDの値を指定します (<code>ACC-[UUID]</code> または、この例では、 <code>ACC-9aa5fdae-4214-4cb7-9976-5d8b4c0ce27f</code>）。
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ロードバランシング用の入力を設定します">ロードバランシング用の入力を設定します</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kubernetes 入力コントローラをセットアップして、クラスタのロードバランシングなどのサービスへの外部アクセスを管理できます。</p>
+</div>
+<div class="paragraph">
+<p>この手順 では、入力コントローラの設定方法について説明します (<code>ingressType:Generic</code>）。これは、 Astra Control Center でのデフォルトのアクションです。Astra Control Center を展開したら、 Astra Control Center を URL で公開するように入力コントローラを設定する必要があります。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+入力コントローラを設定しない場合は、を設定できます <code>ingressType:AccTraefik)</code>。Astra Control Centerは、タイプ「LoadBalancer」のサービスを使用します。 (<code>svc/traefik</code> Astra Control Centerの名前空間）で、アクセス可能な外部IPアドレスが割り当てられている必要があります。お使いの環境でロードバランサが許可されていて、設定されていない場合は、 MetalLB または別の外部サービスロードバランサを使用して、外部 IP アドレスをサービスに割り当てることができます。内部 DNS サーバ構成では、 Astra Control Center に選択した DNS 名を、負荷分散 IP アドレスに指定する必要があります。サービスタイプ「 LoadBalancer 」および入力の詳細については、を参照してください <a href="../get-started/requirements.html">"要件"</a>。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>この手順は、使用する入力コントローラのタイプによって異なります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Istio入力</p>
+</li>
+<li>
+<p>nginx 入力コントローラ</p>
+</li>
+<li>
+<p>OpenShift 入力コントローラ</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">必要なもの</div>
+<ul>
+<li>
+<p>が必要です <a href="https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/">"入力コントローラ"</a> すでに導入されている必要があります。</p>
+</li>
+<li>
+<p>。 <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-class">"入力クラス"</a> 入力コントローラに対応するものがすでに作成されている必要があります。</p>
+</li>
+<li>
+<p>V1.19 と v1.22 の間で Kubernetes のバージョンを使用している。</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Istio Ingressの手順</div>
+<ol class="arabic">
+<li>
+<p>Istio Ingressを設定します。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+この手順 では、「デフォルト」の構成プロファイルを使用してIstioが導入されていることを前提としています。 
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>入力ゲートウェイに必要な証明書と秘密鍵ファイルを収集または作成します。</p>
+<div class="paragraph">
+<p>CA署名証明書または自己署名証明書を使用できます。共通名はAstraアドレス（FQDN）である必要があります。</p>
+</div>
+<div class="paragraph">
+<p>コマンド例： </p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">openssl req -x509 -nodes -days 365 -newkey rsa:2048 
+-keyout tls.key -out tls.crt</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>シークレットを作成します <code>tls secret name</code> を入力します <code>kubernetes.io/tls</code> でTLS秘密鍵と証明書を使用する場合 <code>istio-system namespace</code> TLSシークレットで説明されているように、</p>
+<div class="paragraph">
+<p>コマンド例： </p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl create secret tls [tls secret name] 
+--key="tls.key"
+--cert="tls.crt" -n istio-system</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/tip.svg" alt="ヒント">
+</td>
+<td class="content">
+シークレットの名前はと一致する必要があります <code>spec.tls.secretName</code> で提供されます <code>istio-ingress.yaml</code> ファイル。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>入力リソースをに配置します <code>netapp-acc</code> （またはカスタムネームド）ネームスペースで、v1beta1（Kubernetesバージョンで1.22未満で廃止）またはv1リソースタイプを使用して、非推奨または新しいスキーマのいずれかに対応します。</p>
+<div class="paragraph">
+<p>出力：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: networking.k8s.io/v1beta1
+kind: IngressClass
+metadata:
+  name: istio
+spec:
+  controller: istio.io/ingress-controller
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: istio-system
+spec:
+  ingressClassName: istio
+  tls:
+  - hosts:
+    - &lt;ACC addess&gt;
+    secretName: [tls secret name]
+  rules:
+  - host: [ACC addess]
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: traefik
+          servicePort: 80</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>v1の新しいスキーマについては、次の例を参照してください。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl apply -f istio-Ingress.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>出力：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: istio
+spec:
+  controller: istio.io/ingress-controller
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: istio-system
+spec:
+  ingressClassName: istio
+  tls:
+  - hosts:
+    - &lt;ACC addess&gt;
+    secretName: [tls secret name]
+  rules:
+  - host: [ACC addess]
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: traefik
+            port:
+              number: 80</pre>
+</div>
+</div>
+</li>
+<li>
+<p>通常どおりAstra Control Centerを導入します。</p>
+</li>
+<li>
+<p>入力のステータスを確認します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl get ingress -n netapp-acc</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>対応：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NAME    CLASS HOSTS             ADDRESS         PORTS   AGE
+ingress istio astra.example.com 172.16.103.248  80, 443 1h</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<div class="title">Nginx Ingress Controller の手順</div>
+<ol class="arabic">
+<li>
+<p>タイプのシークレットを作成します[<code>kubernetes.io/tls</code>]をクリックします <code>netapp-acc</code> （またはカスタム名前付き）ネームスペース。を参照してください <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">"TLS シークレット"</a>。</p>
+</li>
+<li>
+<p>入力リソースをに配置します <code>netapp-acc</code> （またはカスタムの名前付き）ネームスペースのいずれかを使用します <code>v1beta1</code> （Kubernetesのバージョンが1.22より前の場合は廃止）または <code>v1</code> 非推奨または新しいスキーマのリソースタイプ：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>に設定します <code>v1beta1</code> 廃止されたスキーマの例を次に示します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: extensions/v1beta1
+Kind: IngressClass
+metadata:
+  name: ingress-acc
+  namespace: [netapp-acc or custom namespace]
+  annotations:
+    kubernetes.io/ingress.class: [class name for nginx controller]
+spec:
+  tls:
+  - hosts:
+    - &lt;ACC address&gt;
+    secretName: [tls secret name]
+  rules:
+  - host: [ACC address]
+    http:
+      paths:
+      - backend:
+        serviceName: traefik
+        servicePort: 80
+        pathType: ImplementationSpecific</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>をクリックします <code>v1</code> 新しいスキーマの例を次に示します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: netapp-acc-ingress
+  namespace: [netapp-acc or custom namespace]
+spec:
+  ingressClassName: [class name for nginx controller]
+  tls:
+  - hosts:
+    - &lt;ACC address&gt;
+    secretName: [tls secret name]
+  rules:
+  - host: &lt;ACC addess&gt;
+    http:
+      paths:
+        - path:
+          backend:
+            service:
+              name: traefik
+              port:
+                number: 80
+          pathType: ImplementationSpecific</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<div class="title">OpenShift 入力コントローラの手順</div>
+<ol class="arabic">
+<li>
+<p>証明書を調達し、 OpenShift ルートで使用できるようにキー、証明書、および CA ファイルを取得します。</p>
+</li>
+<li>
+<p>OpenShift ルートを作成します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">oc create route edge --service=traefik
+--port=web -n [netapp-acc or custom namespace]
+--insecure-policy=Redirect --hostname=&lt;ACC address&gt;
+--cert=cert.pem --key=key.pem</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="astra-control-center-ui-にログインします">Astra Control Center UI にログインします</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Astra Control Center をインストールした後、デフォルトの管理者のパスワードを変更し、 Astra Control Center UI ダッシュボードにログインします。</p>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>ブラウザで、で使用したFQDNを入力します <code>astraAddress</code> を参照してください  <code>astra_control_center_min.yaml</code> CR When（時間）  Astra Control Center,Astra Control Center をインストールした。</p>
+</li>
+<li>
+<p>プロンプトが表示されたら、自己署名証明書を受け入れます。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+カスタム証明書はログイン後に作成できます。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Astra Control Centerのログインページで、に使用した値を入力します <code>email</code> インチ <code>astra_control_center_min.yaml</code> CR When（時間）  Astra Control Center,Astra Control Center をインストールしたをクリックし、続けてワンタイムパスワードを入力します (<code>ACC-[UUID]</code>）。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+誤ったパスワードを 3 回入力すると、管理者アカウントは 15 分間ロックされます。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>[<strong>Login</strong>] を選択します。</p>
+</li>
+<li>
+<p>プロンプトが表示されたら、パスワードを変更します。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
+</td>
+<td class="content">
+初めてログインする際にパスワードを忘れた場合、他の管理ユーザアカウントがまだ作成されていないときは、ネットアップのサポートに問い合わせて、パスワードのリカバリに関するサポートを依頼してください。
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>（オプション）既存の自己署名 TLS 証明書を削除して、に置き換えます <a href="../get-started/add-custom-tls-certificate.html">"認証局（ CA ）が署名したカスタム TLS 証明書"</a>。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="インストールのトラブルシューティングを行います">インストールのトラブルシューティングを行います</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>いずれかのサービスがにある場合 <code>Error</code> ステータスを確認すると、ログを調べることができます。400 ~ 500 の範囲の API 応答コードを検索します。これらは障害が発生した場所を示します。</p>
+</div>
+<div class="olist arabic">
+<div class="title">手順</div>
+<ol class="arabic">
+<li>
+<p>Astra Control Center のオペレータログを調べるには、次のように入力します。</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl logs --follow -n netapp-acc-operator $(kubectl get pods -n netapp-acc-operator -o name) -c manager</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="次の手順">次の手順</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>を実行して導入を完了します <a href="setup_overview.html">"セットアップのタスク"</a>。</p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">利用条件</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">プライバシー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">クッキー ポリシー</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">クッキーの設定</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a target="_self" href="javascript:netapp_mailto()">このページに関するフィードバックをお寄せください</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/ja-jp/astra-control-center-2208/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/ja-jp/astra-control-center-2208/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/ja-jp/astra-control-center-2208/js/prism.js'></script>
+      <script type="text/javascript" src='/ja-jp/astra-control-center-2208/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/ja-jp/astra-control-center-2208/js/www-ntap.js'></script>
+    <script src='/ja-jp/astra-control-center-2208/js/tabbed-blocks.js'></script>
+    <script src='/ja-jp/astra-control-center-2208/js/sidebar.js'></script>
+  </body></html>
