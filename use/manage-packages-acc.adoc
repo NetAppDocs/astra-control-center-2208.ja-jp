@@ -71,6 +71,7 @@ Astra Control Center Web UIを使用して、接続されたリポジトリに�
 . 「 * 追加」を選択します。
 
 
+.結果
 バンドルファイルが有効で、パッケージイメージとアーティファクトが接続されているリポジトリにある場合、パッケージはAstra Control Centerに追加されます。[ステータス*]列のステータスが[使用可能*]に変わったら、パッケージを使用できます。パッケージのステータスにカーソルを合わせると、詳細を確認できます。
 
 
@@ -104,6 +105,7 @@ kubectl astra packages import -m BUNDLE_FILE -u SERVER -a ACCOUNT_ID -k TOKEN
 
 
 
+.結果
 バンドルファイルが有効で、パッケージイメージとアーティファクトが接続されているリポジトリにある場合、パッケージはAstra Control Centerに追加されます。
 
 
@@ -125,6 +127,7 @@ Astra Control Center Web UIを使用して、Astra Control Centerに以前にイ
 . 「 * 削除」を選択します。
 
 
+.結果
 パッケージはAstra Control Centerから削除されますが、パッケージのイメージとアーティファクトはリポジトリに残ります。
 
 [discrete]

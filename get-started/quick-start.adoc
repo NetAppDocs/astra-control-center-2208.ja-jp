@@ -15,7 +15,8 @@ summary: 数ステップで Astra Control を使い始めましょう。
 
 ぜひお試しください。Astra Control Center を試す場合は、 90 日間の評価ライセンスを使用できます。を参照してください link:../get-started/setup_overview.html#add-a-license-for-astra-control-center["ライセンス情報"] を参照してください。
 
-.<span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"[] Alt="One"></span> Kubernetes クラスタの要件を確認します
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1つ"] Kubernetes クラスタの要件を確認
+[role="quick-margin-list"]
 * Astra は、 Trident が設定された ONTAP ストレージバックエンドまたは Astra データストアストレージバックエンドを使用して、 Kubernetes クラスタと連携します。
 * クラスタが正常な状態で稼働し、少なくとも 3 つのオンラインワーカーノードが必要です。
 * クラスタで Kubernetes が実行されている必要があります。
@@ -24,7 +25,8 @@ summary: 数ステップで Astra Control を使い始めましょう。
 [role="quick-margin-para"]
 の詳細については、を参照してください link:../get-started/requirements.html["Astra Control Center の要件"]。
 
-.<span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png"[] Alt="2"></span> Astra Control Center をダウンロードしてインストールします
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["2 つ"] Astra Control Centerをダウンロードしてインストールします
+[role="quick-margin-list"]
 * から Astra Control Center をダウンロードします https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp Support Siteの「 Astra Control Center Downloads 」ページ"^]。
 * Astra Control Center をローカル環境にインストールします。
 +
@@ -38,7 +40,8 @@ summary: 数ステップで Astra Control を使い始めましょう。
 [role="quick-margin-para"]
 の詳細を確認してください link:../get-started/install_overview.html["Astra Control Centerのインストール"]。
 
-.<span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png"[] Alt="3"></span> 初期設定タスクをいくつか実行します
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["3つ"] いくつかの初期セットアップ作業を完了します
+[role="quick-margin-list"]
 * Astra ControlライセンスとサポートするONTAP ライセンスを追加
 * Kubernetes クラスタと Astra Control Center を追加すると、詳細が検出されます。
 * ONTAP ストレージバックエンドを追加します。
@@ -48,15 +51,18 @@ summary: 数ステップで Astra Control を使い始めましょう。
 [role="quick-margin-para"]
 の詳細については、を参照してください link:../get-started/setup_overview.html["初期セットアッププロセス"]。
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["4."] Astra Control Center を使用
 [role="quick-margin-list"]
 Astra Control Center のセットアップが完了したら、次の手順を実行します。
 
+[role="quick-margin-list"]
 * アプリを管理します。方法の詳細については、こちらをご覧ください link:../use/manage-apps.html["アプリの管理"]。
 * アプリの保護ポリシーの設定、リモートシステムへのアプリのレプリケーション、アプリのクローニングと移行により、アプリを保護します。方法の詳細については、こちらをご覧ください link:../use/protection-overview.html["アプリを保護します"]。
 * アカウントの管理（ユーザ、ロール、ユーザ認証用のLDAP、クレデンシャル、リポジトリ接続など）方法の詳細については、こちらをご覧ください link:../use/manage-users.html["ユーザを管理します"]。
 * 必要に応じて、 NetApp Cloud Insights に接続し、 Astra Control Center UI 内のシステム、容量、およびスループットの健全性に関する指標を表示します。の詳細を確認してください link:../use/monitor-protect.html["Cloud Insights に接続しています"]。
 
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["5 つ"] このクイックスタートから続行します
 [role="quick-margin-para"]
 link:../get-started/install_overview.html["Astra Control Center をインストールします"]。
 

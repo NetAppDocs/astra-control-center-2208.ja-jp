@@ -218,7 +218,6 @@
   <block id="4b82d2ba916f71f80b166a691297f031" category="summary">サードパーティの認証局（ CA ）が署名した TLS 証明書をアップロードおよび検証して、自己署名の Astra Control Center 証明書を置き換えることができます。</block>
   <block id="c1da0c460c22d6fba67aca5373a43cb1" category="doc">カスタム TLS 証明書を追加します</block>
   <block id="b6822b6a69873b5cfd266e0a2d8d2a77" category="paragraph">既存の自己署名 TLS 証明書を削除して、認証局（ CA ）が署名した TLS 証明書に置き換えることができます。</block>
-  <block id="a711863513c11f3a6d86294acc7be0ba" category="list-title">必要なもの</block>
   <block id="70f4c838af25e53e799ffca0c2ea44f5" category="list-text">Astra Control Center をインストールした Kubernetes クラスタ</block>
   <block id="0cb21c23cf46c4ea4707d50d3d396f43" category="list-text">実行するクラスタ上のコマンドシェルへの管理アクセス<block ref="0f12ee5c9f1dd90158580f1c292b0d37" prefix=" " category="inline-code"></block> コマンド</block>
   <block id="599cad6552be336cbc11ad6b88a69f35" category="list-text">CA の秘密鍵ファイルと証明書ファイル</block>
@@ -418,7 +417,6 @@
   <block id="009673abdb70c0ffd1710edeb60d8cd2" category="cell">NetApp AutoSupport 通信</block>
   <block id="f370975993dbb1e7c1e24af01ed7986c" category="section-title">サポートされている Web ブラウザ</block>
   <block id="5ee52824555f7e54b800612663b9f098" category="paragraph">Astra Control Center は、最新バージョンの Firefox 、 Safari 、 Chrome をサポートし、解像度は 1280 x 720 以上です。</block>
-  <block id="0a20c90d5270bed19fcaf851778c663b" category="section-title">次の手順</block>
   <block id="159b2efa467f3d1f53e7c16668353bf5" category="inline-link-macro">クイックスタート</block>
   <block id="77a7c94739d3e3b6a3c106162739bbcd" category="paragraph">を表示します <block ref="4a78f9b7a1530228ea4c970be46c5b94" category="inline-link-macro-rx"></block> 概要（ Overview ）：</block>
   <block id="efb8331a92b47dc173e5cbcd8ae1a87b" category="summary">Astra Control Center をインストールして UI にログインし、パスワードを変更したら、ライセンスの設定、クラスタの追加、ストレージの管理、バケットの追加を行います。</block>
@@ -471,11 +469,9 @@
   <block id="b7d863d6846eaf1689410c02279f9ea6" category="section-title">ストレージバックエンドを追加します</block>
   <block id="07bb61072986729e824079c9eb528582" category="paragraph">ストレージバックエンドを追加して、 Astra Control がリソースを管理できるようにすることができます。管理対象クラスタにストレージバックエンドを導入するか、既存のストレージバックエンドを使用できます。</block>
   <block id="eb33ac2274505b5f55f336ecd9e9a2d2" category="paragraph">ストレージバックエンドとして Astra Control のストレージクラスタを管理することで、永続ボリューム（ PVS ）とストレージバックエンドの間のリンケージを取得できるだけでなく、追加のストレージ指標も取得できます。</block>
-  <block id="f8f5539f53262607b5f2bff0f2048a87" category="list-title">既存のAstraデータストアの導入に必要なもの</block>
   <block id="bbcdee2c81617430cf13df9d72e93bd4" category="list-text">Kubernetesアプリケーションクラスタと基盤となるコンピューティングクラスタを追加しておきます。</block>
   <block id="129d92c88545c014f5981e4bedd69fd4" category="inline-link-macro">クラスタを追加</block>
   <block id="dc03b544598d0dfcfdee0b1fce2a4730" category="admonition">Astraデータストア用のKubernetesアプリケーションクラスタを追加し、Astra Controlで管理したあと、クラスタはのように表示されます<block ref="a4078d5d3c7b4099b0e6e6cc3ac7d2cd" prefix=" " category="inline-code"></block> 検出されたバックエンドのリスト。次に、 Astra データストアを含むコンピューティングクラスタを追加し、 Kubernetes アプリケーションクラスタの基盤を構築する必要があります。これは、 UI の * Backends * から実行できます。クラスタのActions（操作）メニューを選択し、を選択します<block ref="34e34c43ec6b943c10a3cc1a1a16fb11" prefix=" " category="inline-code"></block>および <block ref="8c30ee7267ee6c93cf0c195b661c2cd2" category="inline-link-macro-rx"></block>。をクラスタの状態のあとに続けて追加します<block ref="a4078d5d3c7b4099b0e6e6cc3ac7d2cd" prefix=" " category="inline-code"></block> Kubernetesクラスタの名前を変更した場合は、バックエンドの追加に進むことができます。</block>
-  <block id="5f8f1c10343756cee5ac9c33e098132e" category="list-title">新しいAstraデータストアの導入に必要なもの</block>
   <block id="e149dd131ab58984f98a85e4acdc17f3" category="inline-link-macro">導入するインストールバンドルのバージョンをアップロードしました</block>
   <block id="371c46463ca3b465cd0a0b198363c17f" category="list-text">これで完了です <block ref="ce9e25f6db2a9b698807ac8ac2ea2d16" category="inline-link-macro-rx"></block> Astra Controlからアクセス可能な場所への移動。</block>
   <block id="562a8ee2a8f15700012f29228a3198c7" category="list-text">導入に使用するKubernetesクラスタを追加しておきます。</block>
@@ -569,7 +565,6 @@
   <block id="a57d95e33fbdffe3b4bd71d5b0be74cd" category="list-text">「*ストレージクラス*」カテゴリを選択します。</block>
   <block id="b76660fac98aeb4fc46b77e989e6d8b0" category="list-text">デフォルトとして設定するストレージクラスの* Actions *メニューを選択します。</block>
   <block id="b4789b0ec041cd5e51f32c2f901a0951" category="list-text">「*デフォルトに設定*」を選択します。</block>
-  <block id="3f297ef15cde0668e93b35f2752fd4fd" category="section-title">次の手順</block>
   <block id="f5c61eabb41590a473fa2d0d115e63c1" category="paragraph">Astra Control Center にログインしてクラスタを追加したので、 Astra Control Center のアプリケーションデータ管理機能を使い始めることができます。</block>
   <block id="1b4fcfaacbd0ae3e24bc82f8d7a82211" category="inline-link-macro">ユーザを管理します</block>
   <block id="a2ef00bfa82a9800d86855a4a32ccef6" category="list-text"><block ref="a2ef00bfa82a9800d86855a4a32ccef6" category="inline-link-macro-rx"></block></block>
@@ -750,7 +745,6 @@
   <block id="7b07707c591c0c1d685106f821b042b1" category="paragraph">OpenShift Container Platform（OCP）などの自己管理型Kubernetesクラスタを使用して、ディストリビューション内のアプリケーションを管理できます。Astra Control Centerを導入するために検証されるのは、自己管理型のOCPクラスタのみです。</block>
   <block id="5f70f12e51733f39df8a8d8f2f0742da" category="section-title">Amazon Web Services に Astra Control Center を導入</block>
   <block id="b4504a5af800e56b2ac7bc310c520499" category="paragraph">Amazon Web Services （ AWS ）パブリッククラウドでホストされる自己管理型の Kubernetes クラスタに Astra Control Center を導入できます。</block>
-  <block id="4ad0f595b9dbd4c0336e372a8a1b2410" category="section-title">AWS に必要なもの</block>
   <block id="a5a36964a87d94d5ac0851af923c64fc" category="paragraph">AWS に Astra Control Center を導入する前に、次のものが必要です。</block>
   <block id="e7e1ddd48b888f0547b40d916ec5553d" category="inline-link-macro">Astra Control Center のライセンス要件</block>
   <block id="b488bebfd7a3a01cdcc54ea5856291cb" category="list-text">Astra Control Center ライセンス。を参照してください <block ref="fc4957629b78fc8c58b84966810cc78b" category="inline-link-macro-rx"></block>。</block>
@@ -842,7 +836,6 @@
   <block id="4fa3cb64c7a4d0ea493cd71172a39adf" category="admonition">AWSでは汎用のS3バケットタイプが使用されます。</block>
   <block id="1e1383512a183b22a38cf414944a5e6f" category="section-title">Astra Control CenterをGoogle Cloud Platformに導入</block>
   <block id="b22e8d7dd55c8decf5f9ba74419121b1" category="paragraph">Astra Control Centerは、Google Cloud Platform（GCP）パブリッククラウドでホストされる自己管理型のKubernetesクラスタに導入できます。</block>
-  <block id="03bf87a4447c098a7f465eb8095fc070" category="section-title">GCPに必要なもの</block>
   <block id="643d752df6c3694f3ce7af63534415ce" category="paragraph">GCPでAstra Control Centerを導入する前に、次の項目が必要です。</block>
   <block id="f5c6148230da18b53bb888b7c50f6394" category="list-text">OCPを使用している場合は、Red Hat OpenShift Container Platform（OCP）4.10</block>
   <block id="053fe1b94d4c8c543d8ea27c9283521c" category="list-text">バケットとコネクタの作成を可能にする権限を持つGCPサービスアカウント</block>
@@ -902,7 +895,6 @@
   <block id="9e7e41f010f82585ef3b0ebd3f1de902" category="list-text">Astra Control Centerインストール用のイメージをプルするDocker Secretを生成します。</block>
   <block id="4d9093ca668edda8a4b7f1d5efe8d4bd" category="section-title">Microsoft Azure に Astra Control Center を導入</block>
   <block id="7f18f262f0f4112be8239133aa15cff4" category="paragraph">Microsoft Azure パブリッククラウドでホストされる自己管理型の Kubernetes クラスタに Astra Control Center を導入できます。</block>
-  <block id="24fdd2eaa17fe7802a949abb767e47ff" category="section-title">Azure に必要なもの</block>
   <block id="0868fde25a786c798cfe63227a2e632c" category="paragraph">Azure に Astra Control Center を導入する前に、次のものが必要です。</block>
   <block id="06e1b0116459bf681b32b65360e38671" category="list-text">OCPを使用する場合、Red Hat OpenShift Container Platform（OCP）4.8</block>
   <block id="067c001dbf7480cc26099ff0edfb8bda" category="list-text">バケットとコネクタの作成を可能にする権限を持つ Azure クレデンシャル</block>
@@ -1107,12 +1099,10 @@
   <block id="15dd8f83e9a999edc6eae56c5aec726e" category="paragraph">このページでは、 Astra Control Center の導入に必要な手順の概要を説明します。各ステップ内のリンクから、詳細が記載されたページに移動できます。</block>
   <block id="b777e6ba4555d404b00c2436d03ae649" category="inline-link-macro">ライセンス情報</block>
   <block id="dc9e569caa79effd430c7ea63ceff7be" category="paragraph">ぜひお試しください。Astra Control Center を試す場合は、 90 日間の評価ライセンスを使用できます。を参照してください <block ref="3d35b4f40b39e7d8200f90f9d624f8f4" category="inline-link-macro-rx"></block> を参照してください。</block>
-  <block id="4854d4c0301c6f34c76f1cb78057e09e" category="list-title">&lt;span class="image"&gt;&lt;img src=<block ref="0c3becc25d95e48b9ca863002a042824" category="inline-link-rx"></block> Alt="One"&gt;&lt;/span&gt; Kubernetes クラスタの要件を確認します</block>
   <block id="89110f39cddf501c149d691e3219c46f" category="list-text">Astra は、 Trident が設定された ONTAP ストレージバックエンドまたは Astra データストアストレージバックエンドを使用して、 Kubernetes クラスタと連携します。</block>
   <block id="0deb5023224ed4d71135e9bae6dff9d4" category="list-text">クラスタが正常な状態で稼働し、少なくとも 3 つのオンラインワーカーノードが必要です。</block>
   <block id="5f08198ddd920cae8e4af705793b2a56" category="list-text">クラスタで Kubernetes が実行されている必要があります。</block>
   <block id="3eb8247119e86301f694edfa85ee565f" category="paragraph">の詳細については、を参照してください <block ref="a41c664e3d2520e4c4deb907d0286272" category="inline-link-macro-rx"></block>。</block>
-  <block id="9384595b10ef347b2da67882c7b37bd7" category="list-title">&lt;span class="image"&gt;&lt;img src=<block ref="c9bdd0fd7d7224adcf67691b15f15281" category="inline-link-rx"></block> Alt="2"&gt;&lt;/span&gt; Astra Control Center をダウンロードしてインストールします</block>
   <block id="afdff0e68ce5b4b3109d398df16872f7" category="inline-link">NetApp Support Siteの「 Astra Control Center Downloads 」ページ</block>
   <block id="b6511e86f155fe09cdd3bb8e739ea6b5" category="list-text">から Astra Control Center をダウンロードします<block ref="287561c5277beeaf3b39a65b237114c8" category="inline-link-rx"></block>。</block>
   <block id="276a11727deff1a1f5ebf349b23835fc" category="list-text">Astra Control Center をローカル環境にインストールします。</block>
@@ -1120,7 +1110,6 @@
   <block id="9ae09076555ee5ddfe5af03ebf44bcf3" category="paragraph">必要に応じて、Cloud Volumes ONTAP ストレージバックエンドにAstra Control Centerをインストールします。</block>
   <block id="d0945e630f33dd0475cc6b38cb528ffb" category="inline-link-macro">Astra Control Centerのインストール</block>
   <block id="407e54fcf5cadabd365673d315aa5d2c" category="paragraph">の詳細を確認してください <block ref="a4c65d6b325e0b0dbae534b5bb678d6c" category="inline-link-macro-rx"></block>。</block>
-  <block id="80de081c75779cda8e2db1de0f292684" category="list-title">&lt;span class="image"&gt;&lt;img src=<block ref="ddd753dc2858fe3a5582f20b300a0541" category="inline-link-rx"></block> Alt="3"&gt;&lt;/span&gt; 初期設定タスクをいくつか実行します</block>
   <block id="99bebad9572c9b2d89ca66465539d959" category="list-text">Astra ControlライセンスとサポートするONTAP ライセンスを追加</block>
   <block id="89a40ca78d4ff20ec6d54ba006768895" category="list-text">Kubernetes クラスタと Astra Control Center を追加すると、詳細が検出されます。</block>
   <block id="87d2ee45afe04a74320927b3cc97c4ef" category="list-text">ONTAP ストレージバックエンドを追加します。</block>
@@ -1164,7 +1153,6 @@
   <block id="a9a11c7d000cd067981f61a0db579f74" category="summary">評価可能性チェックを実行して、 Astra Control Center にクラスタを追加する準備ができていることを確認する必要があります。</block>
   <block id="0ab8b406c4d5e3b8a7e5b402912b73fc" category="doc">クラスタを追加するための前提条件</block>
   <block id="84fccda9e18ab736ae1e33ef33ff8543" category="paragraph">クラスタを追加する前に、前提条件が満たされていることを確認する必要があります。また、資格チェックを実行して、アストラコントロールセンターにクラスタを追加する準備ができていることを確認する必要があります。</block>
-  <block id="32ce911ba9da44dfbcba79bbe607d8f0" category="section-title">クラスタを追加する前に必要な作業</block>
   <block id="c537fd6227e3e02b92ddc570bb16171d" category="paragraph">クラスタがに記載された要件を満たしていることを確認します <block ref="303f4f914eaab451cb7f742d3c871e5f" category="inline-link-macro-rx"></block>。</block>
   <block id="cbde2df6a7c89370edc449dc5705d30c" category="inline-link">手順</block>
   <block id="b5a54438cd4ef372398ebc0939def4bb" category="admonition">管理対象のコンピューティングリソースとして 2 つ目の OpenShift 4.6 、 4.7 、または 4.8 クラスタを追加する場合は、 Astra Trident ボリュームスナップショット機能が有効になっていることを確認する必要があります。ネットアップの公式 Astra Trident をご覧ください<block ref="8b7ff4f9e99396172438cb6668056409" category="inline-link-rx"></block> Trident を使用して、ボリューム Snapshot を有効にしてテストしてください。</block>
@@ -1809,14 +1797,12 @@
   <block id="a11ca2c2dd5144bf630dd5eb29b7cc67" category="list-text">パスワードの要件に準拠するパスワードを入力します。</block>
   <block id="57d4c802b66507e7e8b66d11f3a59a6f" category="list-text">確認のためパスワードをもう一度入力します。</block>
   <block id="45e3b3a50e0542121cdf2766502b7b56" category="list-text">「 * パスワードの変更 * 」を選択します。</block>
-  <block id="90f1c6fc655d106b5040673f4fce5f99" category="section-title">別のユーザーのパスワードをリセットします</block>
   <block id="777944860c5bbcdb1b4a4a0a593efb52" category="paragraph">アカウントに Admin ロールまたは Owner ロールの権限がある場合は、自分だけでなく他のユーザアカウントのパスワードもリセットできます。パスワードをリセットする場合は、ログイン時にユーザが変更しなければならない一時パスワードを割り当てます。</block>
   <block id="db30d3c2fee806f0319b663d27edf75c" category="list-text">[* アクション * （ * Actions * ） ] ドロップダウンリストを選択します。</block>
   <block id="df429da64d721747277606b598df29c4" category="list-text">「 * パスワードのリセット * 」を選択します。</block>
   <block id="67873c21262ba112b2e21148d43428f5" category="list-text">パスワードの要件に適合する一時パスワードを入力します。</block>
   <block id="7ba107a1d1f1a8008563386e4edebd3d" category="admonition">次回ユーザがログインするときに、パスワードの変更を求めるプロンプトが表示されます。</block>
   <block id="3930015dcc2810869591e35a2b5d714b" category="list-text">「 * パスワードのリセット * 」を選択します。</block>
-  <block id="a3f6d57c07e3d951867e570c6f3e5028" category="section-title">ユーザーの役割を変更します</block>
   <block id="24c0d48852d7cd070e2d6f992f4c74ab" category="paragraph">Owner ロールのユーザはすべてのユーザのロールを変更できますが、 Admin ロールのユーザは Admin 、 Member 、 Viewer のロールを持つユーザのロールを変更できます。</block>
   <block id="8b950be10553ca14d8752cc7cbea7834" category="list-text">[ 役割の編集 ] を選択します。</block>
   <block id="697f40aaae8b73ccaa173cd46b34fbd2" category="list-text">新しいロールを選択します。</block>
@@ -2587,18 +2573,13 @@
   <block id="78ce739c69215b7a8b54179394eea168" category="paragraph">また、ディザスタリカバリに備えてアプリケーションをリモートクラスタにレプリケートすることもできます。</block>
   <block id="fe2011653552de71bf2a04defdef5e3d" category="section-title">アプリケーション保護のワークフロー</block>
   <block id="9e3e52a15539d6b76c9af7b7c901f2dc" category="paragraph">次のワークフロー例を使用して、アプリケーションの保護を開始できます。</block>
-  <block id="22d2c2bc5f801a701ddbdef1d19abcb3" category="section-title">すべてのアプリケーションを保護</block>
   <block id="cdb972c8ec0f0d2d064eee29da832b09" category="inline-link-macro">すべてのアプリケーションの手動バックアップを作成する</block>
   <block id="bb9745866a03e99751c67559a4b5bbfc" category="paragraph">アプリケーションをすぐに保護するには、次の手順を実行します。 <block ref="153c1de46633dd7b9ee4197b0f57d4e6" category="inline-link-macro-rx"></block>。</block>
-  <block id="fc728311492264f387b6d56bf7f401d9" category="section-title">各アプリケーションの保護ポリシーを設定します</block>
   <block id="67d8aac0ef877e89b323dda77c01cdc7" category="inline-link-macro">各アプリケーションの保護ポリシーを設定します</block>
   <block id="a6f3f1cac5047bfc8c8a549d7555afb4" category="paragraph">将来のバックアップとスナップショットを自動化するには、 <block ref="be33481d5db8c6459d2a9f9986e47ba8" category="inline-link-macro-rx"></block>。たとえば、週単位のバックアップと日単位の Snapshot をそれぞれ 1 カ月ずつ保持して開始できます。手動バックアップやスナップショットよりも、保護ポリシーを使用してバックアップとスナップショットを自動化することを強く推奨します。</block>
-  <block id="44c76d6a0a4f1bde94eb2cd76b8d4eae" category="section-title">保護ポリシーを調整します</block>
   <block id="2afcb2016ee556b04a072d6535bbab55" category="paragraph">アプリとその使用パターンが変化したら、必要に応じて保護ポリシーを調整して、最適な保護を実現します。</block>
-  <block id="e0a9a1ca749b026f1191e8980cfd9475" category="section-title">アプリケーションをリモートクラスタにレプリケートします</block>
   <block id="87c77d08f8cc9ba015bc277bf63171ec" category="inline-link-macro">アプリケーションをレプリケートします</block>
   <block id="ed78458df917d6da9f19cca23d8468cd" category="paragraph"><block ref="c229e392652cddf73148e5c65f706c6d" category="inline-link-macro-rx"></block> NetApp SnapMirrorテクノロジを使用してリモートクラスタにバックアップする場合Astra Controlは、Snapshotをリモートクラスタにレプリケートし、非同期のディザスタリカバリ機能を提供します。</block>
-  <block id="c4491e86699f3e74488527dd9f36c879" category="section-title">災害が発生した場合は、最新のバックアップまたはレプリケーションを使用してアプリケーションをリモートシステムにリストアします</block>
   <block id="7ce9ebbb5de6892ca270cea878bd99d1" category="inline-link-macro">最新のバックアップをリストアしています</block>
   <block id="e11f531afbfddcb2e626779912560475" category="paragraph">データ損失が発生した場合は、を使用してリカバリできます <block ref="550aec8aa1d184571b143fbb368e4c54" category="inline-link-macro-rx"></block> まず、各アプリケーションについて説明します。その後、最新の Snapshot をリストアできます（使用可能な場合）。または、リモートシステムへのレプリケーションを使用することもできます。</block>
   <block id="c8bc2d4843a862e6c92deaec60873d67" category="summary">Astra Control Center と Astra Control Center Operator を削除する方法について説明します。</block>
@@ -2708,4 +2689,32 @@
   <block id="1eda8b1f4dfa35b119f2a579170d4546" category="sidebar">クレデンシャルを管理する</block>
   <block id="0adc618a9ad28f57db9328d47cf45165" category="sidebar">Cloud Insights とFluentdを使用してインフラを監視します</block>
   <block id="f28aaf8670a5d0a4f80f0bf5fccb4b1c" category="sidebar">Astra の概要</block>
+  <block id="01e12de62fa77fda2815719aed8ff892" category="section-title">次のステップ</block>
+  <block id="d59db7846bd10b6d60d21543df9faa9e" category="list-title">必要なもの</block>
+  <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">1つ</block>
+  <block id="13a0d74de4f994f2861da351c22e5549" category="list-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> Kubernetes クラスタの要件を確認</block>
+  <block id="aada29daee1d64ed0fe907043855cb7e" category="inline-image-macro">2 つ</block>
+  <block id="6e6d8bfff1b16149f8c62cfee0d2f62e" category="list-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block> Astra Control Centerをダウンロードしてインストールします</block>
+  <block id="ca8a2087e5557e317599344687a57391" category="inline-image-macro">3つ</block>
+  <block id="ba9e9d1eb144bbf0eb66ffe3fb01e03a" category="list-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block> いくつかの初期セットアップ作業を完了します</block>
+  <block id="981b8fcee42e1e726a67a2b9a98ea6e9" category="inline-image-macro">4.</block>
+  <block id="9824425bd5418e5e140ee6b8561b8914" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block> Astra Control Center を使用</block>
+  <block id="e5d9de39f7ca1ba2637e5640af3ae8aa" category="inline-image-macro">5 つ</block>
+  <block id="4e661ed0899ae91f577701320636fabf" category="paragraph-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block> このクイックスタートから続行します</block>
+  <block id="190b1d4301402be73ef9a56adefaf47b" category="section-title">クラスタを追加する前に必要な作業</block>
+  <block id="58eaebf972358f1cf03d386a4ade1a0f" category="section-title">次の手順</block>
+  <block id="9ecb27bf50e09cec4cda2e18d84ea4da" category="list-title">既存のAstraデータストアの導入に必要なもの</block>
+  <block id="75098be5cdce8831c807233c237587a4" category="list-title">新しいAstraデータストアの導入に必要なもの</block>
+  <block id="9905787058ed1f891f5110340336c6f4" category="section-title">AWSに必要なもの</block>
+  <block id="60f26f17249a512292a5fb57e3431dea" category="section-title">GCPに必要なもの</block>
+  <block id="e4f3253ab12e0c60faa03ce6ef1c9784" category="section-title">Azureに必要なもの</block>
+  <block id="cfe9e43a4e29105f9f24bd0ed639721b" category="paragraph-title">汎用（デフォルト）</block>
+  <block id="135b308ed83c53f1516b7c754566d1c4" category="paragraph-title">作業を開始する前に</block>
+  <block id="d94e29dda4626ec2be6ac4f06224f6cf" category="section-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> すべてのアプリケーションを保護</block>
+  <block id="596a8ca466f62d03c2dfc376a65cac71" category="section-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block> 各アプリケーションの保護ポリシーを設定します</block>
+  <block id="db0ae7eb707500904a523f5186eb92f0" category="section-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block> 保護ポリシーを調整します</block>
+  <block id="e954bf1cb1b54437e70f5d5704a01657" category="section-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block> アプリケーションをリモートクラスタにレプリケートします</block>
+  <block id="8ab08c3e81a1ee43c6b03a22403291db" category="section-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block> 災害が発生した場合は、最新のバックアップまたはレプリケーションを使用してアプリケーションをリモートシステムにリストアします</block>
+  <block id="53c5fac0ba78b08ca3f0a270b746c5d2" category="section-title">別のユーザのパスワードをリセットします</block>
+  <block id="edb74efc05972c268b6cccf83996ac3e" category="section-title">ユーザのロールを変更します</block>
 </blocks>

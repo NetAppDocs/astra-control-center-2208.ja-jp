@@ -14,10 +14,10 @@ summary: Astra Control Center をインストールして UI にログインし�
 Astra Control Center は、 ONTAP と Astra データストアをストレージバックエンドとしてサポートおよび監視します。Astra Control Center をインストールして UI にログインし、パスワードを変更したら、ライセンスの設定、クラスタの追加、ストレージの管理、バケットの追加を行います。
 
 .タスク
-*  a license for Astra Control Center
-*  cluster
-*  a storage backend
-*  a bucket
+* <<Astra Control Center のライセンスを追加します>>
+* <<クラスタを追加>>
+* <<ストレージバックエンドを追加します>>
+* <<バケットを追加します>>
 
 
 
@@ -38,6 +38,7 @@ Astra Control Center ライセンスは、 Kubernetes CPU ユニットを使用�
 
 NOTE: インストールがライセンス数を超えると、 Astra Control Center は新しいアプリケーションを管理できなくなります。容量を超えるとアラートが表示されます。
 
+.必要なもの
 から Astra Control Center をダウンロードした場合 https://mysupport.netapp.com/site/products/all/details/astra-control-center/downloads-tab["NetApp Support Site"^]には、 NetApp License File （ NLF ）もダウンロードします。このライセンスファイルにアクセスできることを確認してください。
 
 .手順
@@ -67,7 +68,7 @@ TIP: 他のクラスタを Astra Control Center に追加して管理する前�
 Astra Controlは、クラスタを管理する際に、クラスタのデフォルトストレージクラスを追跡します。を使用してストレージクラスを変更する場合は、を使用します `kubectl` コマンドを実行すると、Astra Controlによって変更が元に戻されます。Astra Controlで管理されるクラスタのデフォルトのストレージクラスを変更するには、次のいずれかの方法を使用します。
 
 * Astra Control API を使用 `PUT /managedClusters` エンドポイントを追加し、で別のデフォルトストレージクラスを割り当てます `DefaultStorageClass` パラメータ
-* Astra Control Web UIを使用して、別のデフォルトストレージクラスを割り当てます。を参照してください  the default storage class。
+* Astra Control Web UIを使用して、別のデフォルトストレージクラスを割り当てます。を参照してください <<デフォルトのストレージクラスを変更する>>。
 
 
 ====
@@ -102,6 +103,7 @@ image:cluster-storage.png["クラスタで使用されるストレージクラ�
 . 情報を確認し、問題がない場合は「 * クラスタの追加 * 」を選択します。
 
 
+.結果
 クラスタが「 Discovering * 」ステータスになり、「 Running 」に変わります。Kubernetes クラスタが正常に追加され、 Astra Control Center で管理できるようになりました。
 
 
@@ -126,12 +128,12 @@ IMPORTANT: Astraデータストア用のKubernetesアプリケーションクラ
 .新しいAstraデータストアの導入に必要なもの
 * これで完了です link:../use/manage-packages-acc.html["導入するインストールバンドルのバージョンをアップロードしました"] Astra Controlからアクセス可能な場所への移動。
 * 導入に使用するKubernetesクラスタを追加しておきます。
-* をアップロードしました  a license for Astra Control Center,Astraデータストアライセンス Astra Controlからアクセス可能な場所への導入をサポートします。
+* をアップロードしました <<Astra Control Center のライセンスを追加します,Astraデータストアライセンス>> Astra Controlからアクセス可能な場所への導入をサポートします。
 
 
 .オプション（ Options ）
-*  storage resources
-*  an existing storage backend
+* <<ストレージリソースを導入>>
+* <<既存のストレージバックエンドを使用する>>
 
 
 
@@ -205,6 +207,7 @@ NOTE: 各ノードのキーに対して、少なくとも3つの一意のラベ�
 . 設定を確認し、「* Deploy *」を選択してインストールを開始します。
 
 
+.結果
 インストールが正常に完了すると、バックエンドがに表示されます `available` バックエンドにアクティブなパフォーマンス情報とともに表示
 
 
@@ -254,6 +257,7 @@ NOTE: ここで入力するクレデンシャルのユーザは、を持って�
 
 
 
+.結果
 バックエンドがに表示されます `available` リストに概要情報を表示します。
 
 
@@ -308,7 +312,7 @@ TIP: バケット名と概要は、バックアップを作成するときに後
 
 NOTE: このオプションは、最初に作成したバケットに対しては表示されません。
 
-.. 追加して続行します  S3 access credentials,クレデンシャル情報。
+.. 追加して続行します <<S3 アクセスクレデンシャルを追加します,クレデンシャル情報>>。
 
 
 

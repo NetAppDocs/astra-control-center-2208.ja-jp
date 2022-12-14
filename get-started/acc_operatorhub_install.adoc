@@ -35,12 +35,12 @@ oc get apiservices
 
 
 .手順
-*  and unpack the Astra Control Center bundle
-*  the NetApp Astra kubectl plugin
-*  the images to your local registry
-*  the operator install page
-*  the operator
-*  Astra Control Center
+* <<Astra Control Centerバンドルをダウンロードして開梱します>>
+* <<ネットアップAstra kubectlプラグインをインストール>>
+* <<イメージをローカルレジストリに追加します>>
+* <<オペレータインストールページを検索します>>
+* <<オペレータをインストールします>>
+* <<Astra Control Center をインストールします>>
 
 
 
@@ -69,6 +69,7 @@ tar -vxzf astra-control-center-[version].tar.gz
 
 ネットアップアストラ `kubectl` コマンドラインプラグインにより、Astra Control Centerの導入とアップグレードに関連する一般的なタスクを実行する時間を節約できます。
 
+.必要なもの
 ネットアップでは、プラグイン用のバイナリを提供しており、CPUアーキテクチャやオペレーティングシステムが異なる場合はそのプラグインをこのタスクを実行する前に、使用しているCPUとオペレーティングシステムを把握しておく必要があります。LinuxおよびMacオペレーティングシステムでは、を使用できます `uname -a` この情報を収集するためのコマンドです。
 
 .手順
@@ -235,6 +236,6 @@ NOTE: 手動承認方式を選択した場合は、このオペレータの手�
 
 
 
-== 次の手順
+== 次のステップ
 
 Astra Control Center が正しくインストールされたことを確認し、を完了します link:../get-started/install_acc.html#verify-system-status["残りのステップ"] ログインしてください。さらに、の導入も完了します link:setup_overview.html["セットアップのタスク"]。

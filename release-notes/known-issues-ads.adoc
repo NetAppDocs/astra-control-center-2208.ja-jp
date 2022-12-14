@@ -28,6 +28,7 @@ https://docs.netapp.com/us-en/astra-data-store/release-notes/known-issues.html["
 Astraデータストアを含むクラスタをAstra Control Centerクラスタに追加した場合、デフォルトではAstraデータストアシステムアプリケーションが非表示アプリケーションとして管理されます。クラスタの管理を解除するには、まず、astrs-systemアプリケーションの管理を解除する必要があります。Astra Control Center UIを使用してこのタイプのアプリケーションを管理解除することはできません。代わりに、Astra Control API要求を使用して手動でアプリケーションを削除します。
 
 .詳細
+[%collapsible]
 ====
 .手順
 . 次のAPIを使用して、管理対象クラスタのIDを取得します。
