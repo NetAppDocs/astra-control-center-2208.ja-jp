@@ -1404,7 +1404,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-22 15:51:35 +0000">11/22/2022</time>
+    <time datetime="2022-12-14 18:25:32 +0000">12/14/2022</time>
     
   
 
@@ -1447,33 +1447,34 @@
 </ul>
 </div>
 <div class="paragraph">
+<div class="title">このタスクについて</div>
 <p>Astra Control Center のアップグレードプロセスでは、次の手順を実行できます。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>the Astra Control Center bundle</p>
+<p><a href="#astra-control-center-バンドルをダウンロードします">Astra Control Center バンドルをダウンロードします</a></p>
 </li>
 <li>
-<p>the bundle and change directory</p>
+<p><a href="#バンドルを開梱し、ディレクトリを変更します">[バンドルを開梱し、ディレクトリを変更します]</a></p>
 </li>
 <li>
-<p>the images to your local registry</p>
+<p><a href="#イメージをローカルレジストリに追加します">イメージをローカルレジストリに追加します</a></p>
 </li>
 <li>
-<p>the updated Astra Control Center operator</p>
+<p><a href="#更新された-astra-control-center-オペレータをインストールします">更新された Astra Control Center オペレータをインストールします</a></p>
 </li>
 <li>
-<p>Astra Control Center</p>
+<p><a href="#astra-control-center-をアップグレードします">Astra Control Center をアップグレードします</a></p>
 </li>
 <li>
-<p>third-party services (Optional)</p>
+<p><a href="#サードパーティサービスのアップグレード（オプション）">[サードパーティサービスのアップグレード（オプション）]</a></p>
 </li>
 <li>
-<p>system status</p>
+<p><a href="#システムステータスを確認します">システムステータスを確認します</a></p>
 </li>
 <li>
-<p>up ingress for load balancing</p>
+<p><a href="#ロードバランシング用の入力を設定します">ロードバランシング用の入力を設定します</a></p>
 </li>
 </ul>
 </div>
@@ -1688,10 +1689,10 @@ done</code></pre>
 </div>
 </li>
 <li>
-<p>変更 <code>[your_registry_path]</code> をクリックします <code>kube-rbac-proxy</code> でイメージをプッシュしたレジストリパスへのイメージ ,前の手順。</p>
+<p>変更 <code>[your_registry_path]</code> をクリックします <code>kube-rbac-proxy</code> でイメージをプッシュしたレジストリパスへのイメージ <a href="#substep_image_local_registry_push">前の手順</a>。</p>
 </li>
 <li>
-<p>変更 <code>[your_registry_path]</code> をクリックします <code>acc-operator-controller-manager</code> でイメージをプッシュしたレジストリパスへのイメージ ,前の手順。</p>
+<p>変更 <code>[your_registry_path]</code> をクリックします <code>acc-operator-controller-manager</code> でイメージをプッシュしたレジストリパスへのイメージ <a href="#substep_image_local_registry_push">前の手順</a>。</p>
 </li>
 <li>
 <p>に次の値を追加します <code>env</code> セクション。</p>
@@ -1809,7 +1810,7 @@ deployment.apps/acc-operator-controller-manager configured</pre>
 <img src="/us-en/astra-control-center-2208/images/note.svg" alt="注記">
 </td>
 <td class="content">
-レジストリパスは、のイメージをプッシュしたレジストリパスと一致する必要があります ,前の手順。
+レジストリパスは、のイメージをプッシュしたレジストリパスと一致する必要があります <a href="#substep_image_local_registry_push">前の手順</a>。
 </td>
 </tr>
 </table>

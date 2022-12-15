@@ -1404,7 +1404,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-22 15:51:35 +0000">11/22/2022</time>
+    <time datetime="2022-12-14 18:25:32 +0000">12/14/2022</time>
     
   
 
@@ -1423,10 +1423,10 @@
 <div class="title">クラスタ管理の制限事項</div>
 <ul>
 <li>
-<p>same cluster cannot be managed by two Astra Control Center instances</p>
+<p><a href="#2-つの-astra-control-center-インスタンスで同じクラスタを管理することはできません">2 つの Astra Control Center インスタンスで同じクラスタを管理することはできません</a></p>
 </li>
 <li>
-<p>Control Center cannot manage two identically named clusters</p>
+<p><a href="#astra-control-center-は同じ名前の-2-つのクラスタを管理できません">Astra Control Center は、同じ名前の 2 つのクラスタを管理できません</a></p>
 </li>
 </ul>
 </div>
@@ -1434,10 +1434,10 @@
 <div class="title">Role-Based Access Control （ RBAC ；ロールベースアクセス制御）の制限事項があります</div>
 <ul>
 <li>
-<p>user with namespace RBAC constraints can add and unmanage a cluster</p>
+<p><a href="#ネームスペースの-rbac-に制約があるユーザはクラスタの追加と管理解除を行うことができます">ネームスペースの RBAC に制約があるユーザは、クラスタの追加と管理解除を行うことができます</a></p>
 </li>
 <li>
-<p>member with namespace constraints cannot access the cloned or restored apps until admin adds the namespace to the constraint</p>
+<p><a href="#名前空間の制約を持つメンバは、管理者が名前空間を制約に追加するまで、クローンまたは復元されたアプリケーションにアクセスできません">[名前空間の制約を持つメンバは、管理者が名前空間を制約に追加するまで、クローンまたは復元されたアプリケーションにアクセスできません]</a></p>
 </li>
 </ul>
 </div>
@@ -1445,16 +1445,16 @@
 <div class="title">アプリケーション管理の制限</div>
 <ul>
 <li>
-<p>of apps installed using pass-by-reference operators can fail</p>
+<p><a href="#パスバイリファレンス演算子を使用してインストールされたアプリケーションのクローンが失敗することがあります">パスバイリファレンス演算子を使用してインストールされたアプリケーションのクローンが失敗することがあります</a></p>
 </li>
 <li>
-<p>restore operations of apps that use a certificate manager are not supported</p>
+<p><a href="#証明書マネージャを使用するアプリケーションの-in-place-リストア処理はサポートされていません">証明書マネージャを使用するアプリケーションの In Place リストア処理はサポートされていません</a></p>
 </li>
 <li>
-<p>and cluster-scoped operator deployed apps not supported</p>
+<p><a href="#olm-対応およびクラスタ対象のオペレータ展開アプリケーションはサポートされていません">OLM 対応およびクラスタ対象のオペレータ展開アプリケーションはサポートされていません</a></p>
 </li>
 <li>
-<p>deployed with Helm 2 are not supported</p>
+<p><a href="#helm-2-で展開されたアプリケーションはサポートされていません">Helm 2 で展開されたアプリケーションはサポートされていません</a></p>
 </li>
 </ul>
 </div>
@@ -1462,16 +1462,16 @@
 <div class="title">一般的な制限事項</div>
 <ul>
 <li>
-<p>buckets in Astra Control Center do not report available capacity</p>
+<p><a href="#astra-control-center-の-s3-バケットは使用可能容量を報告しません">Astra Control Center の S3 バケットは、使用可能容量を報告しません</a></p>
 </li>
 <li>
-<p>Control Center does not validate the details you enter for your proxy server</p>
+<p><a href="#astra-control-center-はプロキシサーバー用に入力した詳細を検証しません">Astra Control Center は、プロキシサーバー用に入力した詳細を検証しません</a></p>
 </li>
 <li>
-<p>connections to a Postgres pod causes failures</p>
+<p><a href="#postgres-ポッドへの既存の接続が原因で障害が発生します">Postgres ポッドへの既存の接続が原因で障害が発生します</a></p>
 </li>
 <li>
-<p>and snapshots might not be retained during removal of an Astra Control Center instance</p>
+<p><a href="#astra-control-center-インスタンスの削除中にバックアップとスナップショットが保持されない場合があります">Astra Control Center インスタンスの削除中にバックアップとスナップショットが保持されない場合があります</a></p>
 </li>
 </ul>
 </div>
