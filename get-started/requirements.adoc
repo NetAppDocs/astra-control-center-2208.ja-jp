@@ -70,7 +70,6 @@ NOTE: これらの要件は、運用環境で実行されている唯一のア�
 * * Astra Trident / ONTAP 構成 * ： Astra Control Center では、ストレージクラスを作成してデフォルトのストレージクラスとして設定する必要があります。Astra Control Center は、 Astra Trident が提供する次の ONTAP ドライバをサポートしています。
 +
 ** ONTAP - NAS
-** ONTAP-NAS-flexgroup
 ** ONTAP - SAN
 ** ONTAP - SAN - 経済性
 
