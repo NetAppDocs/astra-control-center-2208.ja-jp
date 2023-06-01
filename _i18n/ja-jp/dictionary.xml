@@ -275,7 +275,6 @@
   <block id="4d40a8e178faea46fe31329801bc6573" category="list-text">* イメージレジストリ * ： Astra Control Center ビルドイメージをプッシュできる、既存のプライベート Docker イメージレジストリが必要です。イメージをアップロードするイメージレジストリの URL を指定する必要があります。</block>
   <block id="df819717a2baf5b48925d2b4cdaf4745" category="list-text">* Astra Trident / ONTAP 構成 * ： Astra Control Center では、ストレージクラスを作成してデフォルトのストレージクラスとして設定する必要があります。Astra Control Center は、 Astra Trident が提供する次の ONTAP ドライバをサポートしています。</block>
   <block id="8321592ce24c8a122ecf26a63cfca407" category="list-text">ONTAP - NAS</block>
-  <block id="844e84da8e822b4a33c4d8188da97937" category="list-text">ONTAP-NAS-flexgroup</block>
   <block id="73a3350a1b91aeb6e2836fdf5975672c" category="list-text">ONTAP - SAN</block>
   <block id="3016c12c1db45f14c80c9c1731b9c26a" category="list-text">ONTAP - SAN - 経済性</block>
   <block id="a194c96c412e6851d927b9d0e77bba07" category="paragraph">OpenShift 環境でのアプリケーションのクローニングでは、 Astra Control Center が OpenShift でボリュームをマウントし、ファイルの所有権を変更できるようにする必要があります。そのため、これらの処理を許可するには、 ONTAP ボリュームのエクスポートポリシーを設定する必要があります。次のコマンドを使用して実行できます。</block>
@@ -802,7 +801,6 @@
   <block id="e874bd0f330d9513016dc844dfd62e6f" category="paragraph">AWS のドキュメントに従って次の手順を実行します。を参照してください<block ref="b5a7979c22035fe192b9eb8d0cab1e4a" category="inline-link-rx"></block>。</block>
   <block id="9c7a256a23d947f541662b1e88bac33d" category="list-text">AWS仮想ネットワークを作成します。</block>
   <block id="92d9212a67ec9da982a091cf92cb4347" category="list-text">EC2 コンピューティングインスタンスを確認します。AWS ではベアメタルサーバまたは VM を使用できます。</block>
-  <block id="b881f78be517f5315cfb2d556f3448f7" category="list-text">インスタンスタイプが、マスターノードとワーカーノードの Astra の最小リソース要件に一致していない場合は、 Astra の要件に合わせて AWS でインスタンスタイプを変更します。を参照してください <block ref="32be9c8362ea42075ea0b5d43bb3b5d0" category="inline-link-macro-rx"></block>。</block>
   <block id="b109e192f966bb3bb3e8cd30e1a59bfa" category="list-text">バックアップを格納する AWS S3 バケットを少なくとも 1 つ作成します。</block>
   <block id="e5c5351f3ea6206a7f110205b4155acc" category="list-text">すべての ACC イメージをホストする AWS Elastic Container Registry （ ECR ）を作成します。</block>
   <block id="9d58e473a9f64a9efe76c63ca0a30602" category="admonition">ECRを作成しないと、Astra Control Centerは、AWSバックエンドを持つCloud Volumes ONTAP を含むクラスタからモニタリングデータにアクセスできません。問題 は、 Astra Control Center を使用して検出および管理しようとしたクラスタに AWS ECR アクセスがない場合に発生します。</block>
@@ -913,9 +911,6 @@
   <block id="2cce86879561a32f83b0b211ad079596" category="section-title">Azure に Red Hat OpenShift クラスタをインストールします</block>
   <block id="ac7776656696332f732a35f1a0662432" category="paragraph">まず、 Azure に Red Hat OpenShift クラスタをインストールします。</block>
   <block id="4f6685bd07b182993d024dcf856ff5ae" category="inline-link">Azure への OpenShift クラスタのインストール</block>
-  <block id="fef256305fde869fc9c1b90f96dbebe5" category="list-text"><block ref="6613cf818db4dcdf36b939920f432c05" category="inline-link-rx"></block>。</block>
-  <block id="eed9d4fe807c07d271c864a1240c1c3f" category="inline-link">Azure アカウントをインストールする</block>
-  <block id="03936dba93dbfb5fc2df3ced6ce0b025" category="list-text"><block ref="2950a8cca92e141f7cc27cfe82878caa" category="inline-link-rx"></block>。</block>
   <block id="9b227636b2d4cea11291793360089d9f" category="section-title">Azure リソースグループを作成する</block>
   <block id="b15c7c1cada48f735340ffa1ec2e4b6d" category="paragraph">Azure リソースグループを少なくとも 1 つ作成します。</block>
   <block id="f754cf28e9ca6bd457246cb85d6d5535" category="admonition">OpenShift では、独自のリソースグループを作成できます。さらに、 Azure リソースグループも定義する必要があります。OpenShift のドキュメントを参照してください。</block>
@@ -2717,4 +2712,8 @@
   <block id="8ab08c3e81a1ee43c6b03a22403291db" category="section-title"><block ref="99e8b2f00e172bfcff96afdce69907bc" category="inline-image-macro-rx" type="image"></block> 災害が発生した場合は、最新のバックアップまたはレプリケーションを使用してアプリケーションをリモートシステムにリストアします</block>
   <block id="53c5fac0ba78b08ca3f0a270b746c5d2" category="section-title">別のユーザのパスワードをリセットします</block>
   <block id="edb74efc05972c268b6cccf83996ac3e" category="section-title">ユーザのロールを変更します</block>
+  <block id="1ba6670409b12d2ecffe5f765b22636d" category="list-text">インスタンスタイプが、マスターノードとワーカーノードの Astra の最小リソース要件に一致していない場合は、 Astra の要件に合わせて AWS でインスタンスタイプを変更します。  を参照してください <block ref="a41c664e3d2520e4c4deb907d0286272" category="inline-link-macro-rx"></block>。</block>
+  <block id="284a8b144f9341c750b469b574fb8c00" category="inline-link">AzureにOpenShiftクラスタをインストールしています</block>
+  <block id="026f21beafa7ab4dd2e0a19c7d485bb6" category="inline-link">Azureアカウントをインストールしています</block>
+  <block id="49ffba9fa4ce5bf749cec20def44c0b9" category="paragraph">インストール手順については、のRedHatのマニュアルを参照してください<block ref="2b5694f45e8e8a8a0bd04ce92001fd2c" category="inline-link-rx"></block> および<block ref="b57239f3f933c36abb901cdf3e168d8f" category="inline-link-rx"></block>。</block>
 </blocks>
