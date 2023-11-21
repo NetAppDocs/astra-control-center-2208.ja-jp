@@ -588,7 +588,7 @@ Red Hat OpenShiftクラスタとNetApp Cloud Manager Connectorをインストー
 
 次に、仮想ネットワークの作成、コンピューティングインスタンスのセットアップ、Azure Blobコンテナの作成、Astra Control CenterイメージをホストするAzure Container Register（ACR）の作成、このレジストリへのイメージのプッシュを行うようにAzureを設定します。
 
-Azure のドキュメントに従って、次の手順を実行します。を参照してください https://docs.openshift.com/container-platform/4.8/installing/installing_aws/installing-azure-default.html["Azure への OpenShift クラスタのインストール"^]。
+Azure のドキュメントに従って、次の手順を実行します。を参照してください https://docs.openshift.com/container-platform/4.8/installing/installing_azure/preparing-to-install-on-azure.html["Azure への OpenShift クラスタのインストール"^]。
 
 . Azure Virtual Networkの作成
 . コンピューティングインスタンスを確認します。Azure の場合、ベアメタルサーバまたは VM を使用できます。
